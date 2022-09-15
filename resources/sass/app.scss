@@ -1,4 +1,9 @@
-$primary : hotpink ;
+$primary : #62D822;
+$secondary : #00A487;
+$black : #2F4858;
+$danger : #FF2C77;
+$warning : #FFD38A;
+$info : #00667D;
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap';
