@@ -94,7 +94,7 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
                     <a href="{{route('article.index')}}" class="sideBar__link"><i class="feather-list me-1"></i>Articles</a>
                 </li>
                 <li class="sideBar__item">
-                    <a href="#" class="sideBar__link"><i class="feather-folder-plus me-1"></i>Create Articles</a>
+                    <a href="{{route('article.create')}}" class="sideBar__link"><i class="feather-folder-plus me-1"></i>Create Articles</a>
                 </li>
             </ul>
         </li>
