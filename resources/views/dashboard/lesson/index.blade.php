@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="m-0 h4">
-                        <i class="fa-solid fa-list text-secondary"></i>
+                        <i class="uil-list-ol-alt text-secondary"></i>
                         Lessons List
                     </h4>
                     <hr>

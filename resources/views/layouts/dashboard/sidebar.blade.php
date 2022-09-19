@@ -75,7 +75,7 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
         <li class="sideBar__item">
             <ul>
                 <a href="{{route('home')}}" class="sideBar__link">
-                    <i class="feather-sliders"></i>
+                    <i class="uil uil-graph-bar"></i>
                     <span class="h6">Dashboard</span>
                 </a>
             </ul>
@@ -83,30 +83,30 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
 
         <div class="my-3"></div>
         <li class="sideBar__header text-white">
-            <i class="feather-book-open me-2"></i>Lessons Control
+            <i class="uil-book-open me-2"></i>Lessons Control
         </li>
         <li class="sideBar__item">
             <ul id="articles" class="">
                 <li class="sideBar__item">
-                    <a href="{{route('lesson.index')}}" class="sideBar__link"><i class="feather-list me-1"></i>Lessons</a>
+                    <a href="{{route('lesson.index')}}" class="sideBar__link"><i class="uil-list-ol-alt me-1"></i>Lessons</a>
                 </li>
                 <li class="sideBar__item">
-                    <a href="{{route('lesson.create')}}" class="sideBar__link"><i class="feather-folder-plus me-1"></i>Create Lesson</a>
+                    <a href="{{route('lesson.create')}}" class="sideBar__link"><i class="uil-folder-plus me-1"></i>Create Lesson</a>
                 </li>
             </ul>
         </li>
 
         <div class="my-3"></div>
         <li class="sideBar__header text-white">
-            <i class="feather-users me-2"></i> Users Control
+            <i class="uil-users-alt me-2"></i> Users Control
         </li>
         <li class="sideBar__item">
             <ul id="users" class="">
                 <li class="sideBar__item">
-                    <a href="#" class="sideBar__link"><i class="feather-user-plus me-1"></i>Create Users</a>
+                    <a href="#" class="sideBar__link"><i class="uil-user-plus me-1"></i>Create Users</a>
                 </li>
                 <li class="sideBar__item">
-                    <a href="#" class="sideBar__link"><i class="feather-users me-1"></i>Users</a>
+                    <a href="#" class="sideBar__link"><i class="uil-folder-plus me-1"></i>Users</a>
                 </li>
             </ul>
         </li>

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="m-0 h4">
-                        <i class="fa-solid fa-plus-circle text-secondary"></i>
+                        <i class="uil-plus-circle text-secondary"></i>
                         Create Lesson
                     </h4>
                     <hr>

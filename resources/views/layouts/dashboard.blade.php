@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{asset('dashboard/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('dashboard/assets/vendor/fontawesome-free-6/css/all.css')}}">
-    <link rel="stylesheet" href="{{asset('dashboard/assets/vendor/feather-icons-web/feather.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>

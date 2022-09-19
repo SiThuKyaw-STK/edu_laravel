@@ -9,7 +9,7 @@
         <form class="d-none d-md-block">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search everything" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                <button class="btn btn-sm btn-secondary"><i class="feather-search"></i></button>
+                <button class="btn btn-sm btn-secondary"><i class="uil-search-alt"></i></button>
             </div>
         </form>
     </div>
