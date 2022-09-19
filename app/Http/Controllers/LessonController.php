@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
+use App\Models\Lesson;
+use App\Http\Requests\StoreLessonRequest;
+use App\Http\Requests\UpdateLessonRequest;
 
-class ArticleController extends Controller
+class LessonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('dashboard.article.index');
+        return view('dashboard.lesson.index');
     }
 
     /**
@@ -25,16 +25,16 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('dashboard.article.create');
+        return view('dashboard.lesson.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreArticleRequest  $request
+     * @param  \App\Http\Requests\StoreLessonRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleRequest $request)
+    public function store(StoreLessonRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(Lesson $lesson)
     {
         //
     }
@@ -53,10 +53,10 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(Lesson $lesson)
     {
         //
     }
@@ -64,11 +64,11 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateArticleRequest  $request
-     * @param  \App\Models\Article  $article
+     * @param  \App\Http\Requests\UpdateLessonRequest  $request
+     * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
         //
     }
@@ -76,10 +76,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(Lesson $lesson)
     {
         //
     }

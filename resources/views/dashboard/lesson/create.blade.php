@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h4 class="m-0 h4">
                         <i class="fa-solid fa-plus-circle text-secondary"></i>
-                        Create Articles
+                        Create Lesson
                     </h4>
                     <hr>
                     <form>

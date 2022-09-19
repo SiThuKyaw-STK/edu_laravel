@@ -73,43 +73,35 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
             Pages
         </li>
         <li class="sideBar__item">
-            <a href="{{route('home')}}" class="sideBar__link">
-                <i class="feather-sliders"></i>
-                <span class="h6">Dashboard</span>
-            </a>
+            <ul>
+                <a href="{{route('home')}}" class="sideBar__link">
+                    <i class="feather-sliders"></i>
+                    <span class="h6">Dashboard</span>
+                </a>
+            </ul>
         </li>
 
         <div class="my-3"></div>
         <li class="sideBar__header text-white">
-            <i class="feather-book-open me-2"></i>Articles
+            <i class="feather-book-open me-2"></i>Lessons Control
         </li>
         <li class="sideBar__item">
-            <a href="#" class="sideBar__link" data-sideBar-toggle="articles" aria-expanded="true">
-                <i class="feather-settings"></i>
-                <span class="h6">Control</span>
-                <i class="fa fa-angle-up arrow" data-arrow="articles"></i>
-            </a>
-            <ul id="articles" class="sideBar__dropdown">
+            <ul id="articles" class="">
                 <li class="sideBar__item">
-                    <a href="{{route('article.index')}}" class="sideBar__link"><i class="feather-list me-1"></i>Articles</a>
+                    <a href="{{route('lesson.index')}}" class="sideBar__link"><i class="feather-list me-1"></i>Lessons</a>
                 </li>
                 <li class="sideBar__item">
-                    <a href="{{route('article.create')}}" class="sideBar__link"><i class="feather-folder-plus me-1"></i>Create Articles</a>
+                    <a href="{{route('lesson.create')}}" class="sideBar__link"><i class="feather-folder-plus me-1"></i>Create Lesson</a>
                 </li>
             </ul>
         </li>
 
         <div class="my-3"></div>
         <li class="sideBar__header text-white">
-            <i class="feather-users me-2"></i> Users
+            <i class="feather-users me-2"></i> Users Control
         </li>
         <li class="sideBar__item">
-            <a href="#" class="sideBar__link" data-sideBar-toggle="users" aria-expanded="true">
-                <i class="feather-settings"></i>
-                <span class="h6">Control</span>
-                <i class="fa fa-angle-up arrow" data-arrow="users"></i>
-            </a>
-            <ul id="users" class="sideBar__dropdown">
+            <ul id="users" class="">
                 <li class="sideBar__item">
                     <a href="#" class="sideBar__link"><i class="feather-user-plus me-1"></i>Create Users</a>
                 </li>

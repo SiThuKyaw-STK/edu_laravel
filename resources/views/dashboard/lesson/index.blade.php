@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h4 class="m-0 h4">
                         <i class="fa-solid fa-list text-secondary"></i>
-                        Article List
+                        Lessons List
                     </h4>
                     <hr>
                     <table id="example" class="display hover cell-border nowrap" style="width:100%">

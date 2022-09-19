@@ -68,13 +68,9 @@ margin-left: -16.6%;
     color: #ffffff99;
 }
 .sideBar__dropdown{
-    height: 0;
-    overflow: hidden;
-    transition: .5s;
+
 }
-.sideBar__dropdown.show{
-    height: 80px;
-}
+
 
 /*main*/
 

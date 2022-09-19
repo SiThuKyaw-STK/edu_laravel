@@ -44,3 +44,4 @@ show__mobile__sidebar.on('click',function () {
     $('.sideBar').addClass('mobile__sidebar__add');
 
 })
+
