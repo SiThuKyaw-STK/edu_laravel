@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light shadow-sm p-2">
     <div class="d-flex align-items-center">
-        <i class="feather-menu d-block d-md-none show__mobile__sidebar"></i>
+        <i class="uil-bars d-block d-md-none show__mobile__sidebar"></i>
         <div class="hamburger not-active me-3 d-none d-md-block">
             <span></span>
             <span></span>

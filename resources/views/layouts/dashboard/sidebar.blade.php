@@ -1,5 +1,5 @@
 <nav class="col-2 bg-black sideBar min-vh-100">
-    <i id="mobile__sidebar__remove" class="feather-x mobile__sidebar__remove d-block d-lg-none"></i>
+    <i id="mobile__sidebar__remove" class="uil-times mobile__sidebar__remove d-block d-lg-none"></i>
     <a href="{{route('home')}}" class="sideBar-brand">
         <div class="d-flex align-items-center justify-content-center">
             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"

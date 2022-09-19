@@ -10,7 +10,7 @@
                         Lessons List
                     </h4>
                     <hr>
-                    <table id="example" class="display hover cell-border nowrap" style="width:100%">
+                    <table id="d-table" class="display hover cell-border nowrap" style="width:100%">
                         <thead class="">
                         <tr>
                             <th>Name</th>

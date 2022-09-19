@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{asset('dashboard/assets/css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
 
@@ -48,17 +47,6 @@
 </div>
 
 <script src="{{asset('dashboard/assets/js/jquery.min.js')}}"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-<!--<script src="https://cdn.datatables.net/1.12.1/js/dataTables.semanticui.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>-->
 <script src="{{asset('dashboard/assets/js/app.js')}}"></script>
-<script>
-    $(document).ready( function () {
-        $('#example').DataTable({
-            responsive : true,
-            scrollX: true,
-        });
-    } );
-</script>
 </body>
 </html>
