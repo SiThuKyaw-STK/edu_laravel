@@ -13,7 +13,7 @@ class UpdateSubjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateSubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "subject_title" => "required|min:3|unique:subjects,title,".$this->route('subject')->id
         ];
     }
 }

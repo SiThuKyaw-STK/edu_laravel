@@ -46,7 +46,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
                         <button type="submit" class="btn btn-secondary float-end">Create</button>
                     </form>
@@ -75,6 +74,9 @@
                                     <td>{{$subject->title}}</td>
                                     <td>{{$subject->getUser->name}}</td>
                                     <td>
+                                        <a href="{{ route('subject.edit',$subject->id) }}" class="btn btn-sm btn-outline-info">
+                                            <i class="uil-pen"></i>
+                                        </a>
                                         <form action="{{ route('subject.destroy',$subject->id) }}" class="d-inline-block" method="post">
                                             @csrf
                                             @method('delete')

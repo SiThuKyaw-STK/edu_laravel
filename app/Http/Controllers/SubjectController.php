@@ -71,7 +71,7 @@ class SubjectController extends Controller
      */
     public function edit(Subject $subject)
     {
-        //
+        return view('dashboard.subject.edit',compact('subject'));
     }
 
     /**
@@ -83,7 +83,11 @@ class SubjectController extends Controller
      */
     public function update(UpdateSubjectRequest $request, Subject $subject)
     {
-        //
+        $subject->title = $request->subject_title;
+        $subject->slug = Str::slug($request->subject_title);
+        $subject->update();
+
+        return redirect()->route('subject.create');
     }
 
     /**
