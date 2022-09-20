@@ -48,12 +48,48 @@
                             </div>
 
                         </div>
-                        <button type="submit" class="btn btn-secondary float-end">Add</button>
+                        <button type="submit" class="btn btn-secondary float-end">Create</button>
                     </form>
 
                 </div>
             </div>
 
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <table id="d-table2" class="display hover cell-border nowrap">
+                        <thead>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Subject</th>
+                            <th>Uploader</th>
+                            <th>Control</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($subjects as $subject)
+                                <tr>
+                                    <td>{{$subject->getGrade->title}}</td>
+                                    <td>{{$subject->title}}</td>
+                                    <td>{{$subject->getUser->name}}</td>
+                                    <td>
+                                        <form action="{{ route('subject.destroy',$subject->id) }}" class="d-inline-block" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="uil uil-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>{{$subject->created_at->diffForHumans()}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

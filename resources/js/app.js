@@ -11,4 +11,8 @@ $(document).ready( function () {
         responsive : true,
         scrollX: true,
     });
+    $('#d-table2').DataTable({
+        responsive : true,
+        scrollX: true,
+    });
 } );

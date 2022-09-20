@@ -29,8 +29,10 @@ class SubjectController extends Controller
     public function create()
     {
         $grades = Grade::all();
+        $subjects = Subject::all();
 
-        return view('dashboard.subject.create',compact('grades'));
+
+        return view('dashboard.subject.create',compact('subjects','grades'));
     }
 
     /**
@@ -92,6 +94,9 @@ class SubjectController extends Controller
      */
     public function destroy(Subject $subject)
     {
-        //
+
+        $subject->delete();
+
+        return redirect()->route('subject.create');
     }
 }
