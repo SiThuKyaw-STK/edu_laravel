@@ -6,6 +6,8 @@ use App\Models\Grade;
 use App\Models\Subject;
 use App\Http\Requests\StoreSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class SubjectController extends Controller
 {
@@ -39,7 +41,13 @@ class SubjectController extends Controller
      */
     public function store(StoreSubjectRequest $request)
     {
-        //
+        $subject = new Subject();
+        $subject->grade_id = $request->grade;
+        $subject->title = $request->subject_title;
+        $subject->slug = Str::slug($request->subject_title);
+        $subject->user_id = Auth::id();
+        $subject->save();
+        return redirect()->route('subject.create');
     }
 
     /**

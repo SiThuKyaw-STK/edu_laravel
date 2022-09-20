@@ -10,7 +10,8 @@
                         Create Lesson
                     </h4>
                     <hr>
-                    <form>
+                    <form >
+                        @csrf
                         <div class="mb-3">
                             <label class="form-label">Select Grade</label>
                             <select class="form-select">
