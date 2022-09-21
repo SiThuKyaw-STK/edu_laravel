@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use App\Models\Subject;
 
 class LessonController extends Controller
 {
@@ -25,7 +27,10 @@ class LessonController extends Controller
      */
     public function create()
     {
-        return view('dashboard.lesson.create');
+        $grades = Grade::all();
+        $subjects = Subject::all();
+
+        return view('dashboard.lesson.create',compact('grades','subjects'));
     }
 
     /**

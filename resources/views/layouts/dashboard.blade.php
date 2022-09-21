@@ -48,5 +48,6 @@
 
 <script src="{{asset('dashboard/assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('dashboard/assets/js/app.js')}}"></script>
+@stack('script')
 </body>
 </html>

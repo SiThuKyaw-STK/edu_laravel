@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Grade extends Model
 {
     use HasFactory;
+
+    public function getSubjects(){
+        return $this->hasMany(Subject::class);
+    }
 }
