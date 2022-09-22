@@ -33,6 +33,11 @@ class LessonController extends Controller
         return view('dashboard.lesson.create',compact('grades','subjects'));
     }
 
+    public function getSubjects($id){
+        $subjects = Subject::where('grade_id',$id)->pluck("title","id");
+        return json_encode($subjects);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

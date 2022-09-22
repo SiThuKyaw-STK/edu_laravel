@@ -70,9 +70,9 @@
                         <tbody>
                             @foreach($subjects as $subject)
                                 <tr>
-                                    <td>{{$subject->getGrade->title}}</td>
+                                    <td>{{$subject->grade->title}}</td>
                                     <td>{{$subject->title}}</td>
-                                    <td>{{$subject->getUser->name}}</td>
+                                    <td>{{$subject->user->name}}</td>
                                     <td>
                                         <a href="{{ route('subject.edit',$subject->id) }}" class="btn btn-sm btn-outline-info">
                                             <i class="uil-pen"></i>

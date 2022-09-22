@@ -9,7 +9,7 @@ class Grade extends Model
 {
     use HasFactory;
 
-    public function getSubjects(){
+    public function subjects(){
         return $this->hasMany(Subject::class);
     }
 }

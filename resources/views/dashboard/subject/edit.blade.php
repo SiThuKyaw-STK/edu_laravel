@@ -5,7 +5,7 @@
         <div class="col-12 col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h4>Edit {{$subject->getGrade->title}}'s {{$subject->title}}</h4>
+                    <h4>Edit {{$subject->grade->title}}'s {{$subject->title}}</h4>
                     <hr>
                     <form action="{{route('subject.update',$subject->id)}}" method="post">
                         @csrf
@@ -14,7 +14,7 @@
                             <div class="col-6">
                                 <div class="">
                                     <label class="form-label">Grade</label>
-                                    <input type="text" value="{{$subject->getGrade->title}}" class="form-control" disabled>
+                                    <input type="text" value="{{$subject->grade->title}}" class="form-control" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 col-6">

@@ -9,10 +9,10 @@ class Subject extends Model
 {
     use HasFactory;
 
-    public function getGrade(){
+    public function grade(){
        return $this->belongsTo(Grade::class,'grade_id');
     }
-    public function getUser(){
+    public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
 }

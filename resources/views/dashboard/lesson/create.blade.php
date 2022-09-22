@@ -8,22 +8,14 @@
                     <h4 class="m-0 h4">
                         <i class="uil-plus-circle text-secondary"></i>
                         Create Lesson
-                        @foreach($grades as $grade)
-                            @foreach($grade->getSubjects as $subject)
-                                @if($subject->grade_id == 1)
-                                    hi
-                                @elseif($subject->grade_id == 11)
-                                    hey
-                                @endif
-                            @endforeach
-                        @endforeach
                     </h4>
                     <hr>
                     <form >
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Select Grade</label>
-                            <select onchange="getGrade()" type="text" name="grade" id="grade" class="form-select @error('grade') is-invalid @enderror">
+                            <select type="text" name="grade" id="grade" class="form-select @error('grade') is-invalid @enderror">
+                                <option name="grade" value="0">Grade</option>
                                 @forelse($grades as $grade)
                                     <option
                                         value="{{$grade->id}}"
@@ -42,19 +34,7 @@
                         <div class="mb-3">
                             <label class="form-label">Select Subject</label>
                             <select type="text" name="subject" id="subject" class="form-select @error('subject') is-invalid @enderror">
-                                @forelse($grades as $grade)
-                                    @foreach($grade->getSubjects as $subject)
-                                        @if($subject->grade_id == 8)
-                                            <option
-                                                value="{{$subject->id}}"
-                                                {{ $subject->id == old('subject') ? 'selected':'' }}>
-                                                {{$subject->title}}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                @empty
-                                    <option value="">There is no data</option>
-                                @endforelse
+                                <option selected>Subject</option>
                             </select>
                             @error("subject")
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -78,10 +58,27 @@
 @endsection
 @push('script')
     <script>
-        function getGrade() {
-            let grade = document.getElementById("grade").value;
-            let subject = document.getElementById("subject");
+        $(document).ready(function () {
+            $('select[name="grade"]').on('change',function () {
+                let gradeID = $(this).val();
+                if (gradeID != 0){
+                    $.ajax({
+                        url:'/getSubjects/' + gradeID,
+                        type: "GET",
+                        dataType : "json",
+                        success : function (data) {
+                            $('select[name="subject"]').empty();
+                            $.each(data,function (key,value) {
+                                $('select[name="subject"]').append('<option value="'+key+'">'+value+'</option>');
+                            });
+                        }
+                    });
+                }else  {
+                    $('select[name="subject"]').empty();
+                    $('select[id="subject"]').append('<option>Subject</option>');
+                }
 
-        }
+            })
+        })
     </script>
 @endpush
