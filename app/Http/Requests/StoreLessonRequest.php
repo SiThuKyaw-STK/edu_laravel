@@ -13,7 +13,7 @@ class StoreLessonRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreLessonRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'grade' => 'required|exists:grades,id',
+            'subject' => 'required|exists:subjects,id',
+            'lesson_title' => 'required|min:3',
+            'lesson_des' => 'required|min:10'
         ];
     }
 }

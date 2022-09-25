@@ -10,12 +10,12 @@
                         Create Lesson
                     </h4>
                     <hr>
-                    <form >
+                    <form action="{{route('lesson.store')}}" method="post">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Select Grade</label>
                             <select type="text" name="grade" id="grade" class="form-select @error('grade') is-invalid @enderror">
-                                <option name="grade" value="0">Grade</option>
+                                <option value="-1">Grade</option>
                                 @forelse($grades as $grade)
                                     <option
                                         value="{{$grade->id}}"
@@ -34,7 +34,7 @@
                         <div class="mb-3">
                             <label class="form-label">Select Subject</label>
                             <select type="text" name="subject" id="subject" class="form-select @error('subject') is-invalid @enderror">
-                                <option selected>Subject</option>
+
                             </select>
                             @error("subject")
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -42,11 +42,17 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Lesson Title</label>
-                            <input type="text" name="lesson_title" class="form-control">
+                            <input type="text" name="lesson_title" class="form-control @error('lesson_title') is-invalid @enderror">
+                            @error("lesson_title")
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Lesson Description</label>
-                            <textarea class="form-control" name="lesson_des" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-control @error('lesson_des') is-invalid @enderror" name="lesson_des" id="" cols="30" rows="10"></textarea>
+                            @error("lesson_des")
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-secondary">Add Post</button>
                     </form>
@@ -59,9 +65,9 @@
 @push('script')
     <script>
         $(document).ready(function () {
-            $('select[name="grade"]').on('change',function () {
+            $('select[name="grade"]').on('click',function () {
                 let gradeID = $(this).val();
-                if (gradeID != 0){
+                if (gradeID != -1){
                     $.ajax({
                         url:'/getSubjects/' + gradeID,
                         type: "GET",
@@ -75,10 +81,18 @@
                     });
                 }else  {
                     $('select[name="subject"]').empty();
-                    $('select[id="subject"]').append('<option>Subject</option>');
+                    $('select[name="subject"]').append('<option >Subject</option>');
                 }
 
             })
         })
+        let clickGrade =setInterval(function () {
+            let grade = $('#grade');
+            grade.click()
+        },200)
+        setTimeout(function () {
+            clearInterval(clickGrade)
+        },500)
+
     </script>
 @endpush
