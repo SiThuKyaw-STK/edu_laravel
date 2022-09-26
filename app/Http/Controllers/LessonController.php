@@ -114,6 +114,7 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+        return redirect()->route('lesson.index');
     }
 }

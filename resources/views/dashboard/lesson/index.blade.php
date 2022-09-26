@@ -32,6 +32,13 @@
                                     <a href="{{ route('lesson.edit',$lesson->id) }}" class="btn btn-sm btn-outline-info">
                                         <i class="uil-pen"></i>
                                     </a>
+                                    <form action="{{ route('lesson.destroy',$lesson->id) }}" class="d-inline-block" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="uil uil-trash-alt"></i>
+                                        </button>
+                                    </form>
                                 </td>
                                 <td>{{$lesson->created_at->diffForHumans()}}</td>
                             </tr>
