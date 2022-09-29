@@ -90,9 +90,11 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
                 <li class="sideBar__item">
                     <a href="{{route('lesson.index')}}" class="sideBar__link"><i class="uil-list-ol-alt me-1"></i>Lessons</a>
                 </li>
+                @can('sideBarSubjectAdmin')
                 <li class="sideBar__item">
                     <a href="{{route('subject.create')}}" class="sideBar__link"><i class="uil-file-plus-alt me-1"></i>Create Subject</a>
                 </li>
+                @endcan
                 <li class="sideBar__item">
                     <a href="{{route('lesson.create')}}" class="sideBar__link"><i class="uil-plus-circle me-1"></i>Create Lesson</a>
                 </li>

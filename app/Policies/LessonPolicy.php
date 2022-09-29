@@ -10,6 +10,13 @@ class LessonPolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user){
+        if ($user->role == 0 || $user->role == 1){
+            return true;
+        }
+
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -53,7 +60,7 @@ class LessonPolicy
      */
     public function update(User $user, Lesson $lesson)
     {
-        //
+        return $user->id === $lesson->user_id;
     }
 
     /**
@@ -65,7 +72,7 @@ class LessonPolicy
      */
     public function delete(User $user, Lesson $lesson)
     {
-        //
+        return $user->id === $lesson->user_id;
     }
 
     /**

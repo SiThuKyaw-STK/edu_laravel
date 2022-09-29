@@ -29,9 +29,15 @@
                                 <td><span class="fw-bolder">{{$lesson->title}}</span><br>{{$lesson->excerpt}}</td>
                                 <td>{{$lesson->getUser->name}}</td>
                                 <td>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">
+                                        <i class="uil-info"></i>
+                                    </a>
+                                    @can('update',$lesson)
                                     <a href="{{ route('lesson.edit',$lesson->id) }}" class="btn btn-sm btn-outline-info">
                                         <i class="uil-pen"></i>
                                     </a>
+                                    @endcan
+                                    @can('delete',$lesson)
                                     <form action="{{ route('lesson.destroy',$lesson->id) }}" class="d-inline-block" method="post">
                                         @csrf
                                         @method('delete')
@@ -39,6 +45,7 @@
                                             <i class="uil uil-trash-alt"></i>
                                         </button>
                                     </form>
+                                    @endcan
                                 </td>
                                 <td>{{$lesson->created_at->diffForHumans()}}</td>
                             </tr>

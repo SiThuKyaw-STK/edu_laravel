@@ -8,6 +8,7 @@ use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class LessonController extends Controller
@@ -49,6 +50,8 @@ class LessonController extends Controller
      */
     public function store(StoreLessonRequest $request)
     {
+
+
         $lesson = new Lesson();
         $lesson->grade_id = $request->grade;
         $lesson->subject_id = $request->subject;
@@ -81,6 +84,7 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
+
         $grades = Grade::all();
 
         return view('dashboard.lesson.edit',compact('lesson','grades'));
@@ -95,6 +99,11 @@ class LessonController extends Controller
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
+
+        if (Gate::denies('update',$lesson)){
+            return abort(401);
+        }
+
         $lesson->grade_id = $request->grade;
         $lesson->subject_id = $request->subject;
         $lesson->title = $request->lesson_title;
