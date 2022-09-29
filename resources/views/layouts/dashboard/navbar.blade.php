@@ -24,7 +24,6 @@
             <li><a href="#" class="d-flex align-items-center"><i class="feather-clock me-2"></i>Analytics</a></li>
             <hr style="margin: .5rem">
             <li><a href="#" class="d-flex align-items-center"><i class="feather-settings me-2"></i>Setting & Privacy</a></li>
-            <li><a href="#" class="d-flex align-items-center"><i class="feather-log-out me-2"></i>Log Out</a></li>
             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
                     <i class="feather-log-out me-2"></i>

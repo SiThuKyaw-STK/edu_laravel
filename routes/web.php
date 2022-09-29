@@ -23,7 +23,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('/lesson',LessonController::class);
 Route::get('/getSubjects/{id}',[LessonController::class,'getSubjects'])->name('lesson.getSubjects');
-Route::resource('/subject',SubjectController::class);
+
+
+Route::middleware("auth")->prefix("dashboard")->group(function (){
+    Route::resource('/lesson',LessonController::class);
+    Route::resource('/subject',SubjectController::class)->middleware('isAdminOrEditor');
+
+});
