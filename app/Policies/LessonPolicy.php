@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use function League\Flysystem\Local\resolveDirectoryVisibility;
 
 class LessonPolicy
 {

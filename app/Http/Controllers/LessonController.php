@@ -20,7 +20,10 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $lessons = Lesson::all();
+        $lessons = Lesson::latest("id")
+            ->when(Auth::user()->isAuthor(),fn($q)=>$q->where("user_id",Auth::id()))
+            ->get();
+
 
         return view('dashboard.lesson.index',compact('lessons'));
     }
@@ -85,6 +88,7 @@ class LessonController extends Controller
     public function edit(Lesson $lesson)
     {
 
+        Gate::authorize('update',$lesson);
         $grades = Grade::all();
 
         return view('dashboard.lesson.edit',compact('lesson','grades'));
@@ -123,6 +127,9 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
+        if (Gate::denies('delete',$lesson)){
+            return abort(401);
+        }
         $lesson->delete();
         return redirect()->route('lesson.index');
     }

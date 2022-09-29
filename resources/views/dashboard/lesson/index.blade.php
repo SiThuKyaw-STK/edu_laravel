@@ -13,10 +13,13 @@
                     <table id="d-table" class="display hover cell-border nowrap" style="width:100%">
                         <thead class="">
                         <tr>
+                            <th>#</th>
                             <th>Grade</th>
                             <th>Subject</th>
                             <th>Lesson</th>
+                            @if(\Illuminate\Support\Facades\Auth::user()->role != 2)
                             <th>Uploader</th>
+                            @endif
                             <th>Control</th>
                             <th>Date</th>
                         </tr>
@@ -24,10 +27,13 @@
                         <tbody>
                         @foreach($lessons as $lesson)
                             <tr>
+                                <td>{{$lesson->id}}</td>
                                 <td>{{$lesson->getGrade->title}}</td>
                                 <td>{{$lesson->getSubject->title}}</td>
                                 <td><span class="fw-bolder">{{$lesson->title}}</span><br>{{$lesson->excerpt}}</td>
+                                @if(\Illuminate\Support\Facades\Auth::user()->role != 2)
                                 <td>{{$lesson->getUser->name}}</td>
+                                @endif
                                 <td>
                                     <a href="#" class="btn btn-sm btn-outline-primary">
                                         <i class="uil-info"></i>
