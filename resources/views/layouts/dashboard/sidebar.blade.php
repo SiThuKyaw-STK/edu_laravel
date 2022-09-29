@@ -101,6 +101,7 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
             </ul>
         </li>
 
+        @can('sideBarSubjectAdmin')
         <div class="my-3"></div>
         <li class="sideBar__header text-white">
             <i class="uil-users-alt me-2"></i> Users Control
@@ -115,6 +116,7 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
                 </li>
             </ul>
         </li>
+        @endcan
 
     </ul>
 </nav>

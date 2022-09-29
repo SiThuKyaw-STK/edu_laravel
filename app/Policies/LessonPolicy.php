@@ -12,7 +12,7 @@ class LessonPolicy
     use HandlesAuthorization;
 
     public function before(User $user){
-        if ($user->role == 0 || $user->role == 1){
+        if ($user->role == 0 ){
             return true;
         }
 
@@ -61,6 +61,9 @@ class LessonPolicy
      */
     public function update(User $user, Lesson $lesson)
     {
+        if ($user->role == 1){
+            return $lesson->getUser->role != 0 ;
+        }
         return $user->id === $lesson->user_id;
     }
 
@@ -73,6 +76,9 @@ class LessonPolicy
      */
     public function delete(User $user, Lesson $lesson)
     {
+        if ($user->role == 1){
+            return $lesson->getUser->role != 0 ;
+        }
         return $user->id === $lesson->user_id;
     }
 
