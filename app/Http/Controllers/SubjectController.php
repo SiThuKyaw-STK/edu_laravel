@@ -28,8 +28,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $grades = Grade::all();
-        $subjects = Subject::all();
+        $grades = Grade::with(['subjects'])->get();
+        $subjects = Subject::with(['grade','user'])->get();
 
 
         return view('dashboard.subject.create',compact('subjects','grades'));

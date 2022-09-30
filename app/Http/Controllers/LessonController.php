@@ -22,6 +22,7 @@ class LessonController extends Controller
     {
         $lessons = Lesson::latest("id")
             ->when(Auth::user()->isAuthor(),fn($q)=>$q->where("user_id",Auth::id()))
+            ->with(['getGrade','getSubject','getUser'])
             ->get();
 
 
