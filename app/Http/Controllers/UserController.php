@@ -16,8 +16,35 @@ class UserController extends Controller
         $currentUser = User::find($request->id);
         if ($currentUser->role == 2){
             $currentUser->role = '1';
-            $currentUser->update();
         }
+        $currentUser->update();
+        return redirect()->route('user.index');
+    }
+
+    public function makeUser(Request $request){
+        $currentUser = User::find($request->id);
+        if ($currentUser->role == 1){
+            $currentUser->role = '2';
+        }
+        $currentUser->update();
+        return redirect()->route('user.index');
+    }
+
+    public function ban(Request $request){
+        $currentUser = User::find($request->id);
+        if ($currentUser->isBaned == 1){
+            $currentUser->isBaned = '0';
+        }
+        $currentUser->update();
+        return redirect()->route('user.index');
+    }
+
+    public function restore(Request $request){
+        $currentUser = User::find($request->id);
+        if ($currentUser->isBaned == 0){
+            $currentUser->isBaned = '1';
+        }
+        $currentUser->update();
         return redirect()->route('user.index');
     }
 }
