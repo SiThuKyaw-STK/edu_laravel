@@ -109,10 +109,7 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
         <li class="sideBar__item">
             <ul id="users" class="">
                 <li class="sideBar__item">
-                    <a href="#" class="sideBar__link"><i class="uil-user-plus me-1"></i>Create Users</a>
-                </li>
-                <li class="sideBar__item">
-                    <a href="#" class="sideBar__link"><i class="uil-folder-plus me-1"></i>Users</a>
+                    <a href="{{route('user.index')}}" class="sideBar__link"><i class="uil-folder-plus me-1"></i>Users</a>
                 </li>
             </ul>
         </li>

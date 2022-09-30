@@ -15,4 +15,8 @@ $(document).ready( function () {
         responsive : true,
         scrollX: true,
     });
+    $('#d-table-user').DataTable({
+        responsive : true,
+        scrollX: true,
+    });
 } );
