@@ -35,7 +35,7 @@
                                 <td>{{$lesson->getUser->name}}</td>
                                 @endif
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-outline-primary">
+                                    <a href="{{route('lesson.show',$lesson)}}" class="btn btn-sm btn-outline-secondary">
                                         <i class="uil-info"></i>
                                     </a>
                                     @can('update',$lesson)

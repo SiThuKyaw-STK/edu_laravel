@@ -76,7 +76,9 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        Gate::authorize('view',$lesson);
+
+        return view('dashboard.lesson.show',compact('lesson'));
     }
 
     /**
