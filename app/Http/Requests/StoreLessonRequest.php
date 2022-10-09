@@ -27,7 +27,8 @@ class StoreLessonRequest extends FormRequest
             'grade' => 'required|exists:grades,id',
             'subject' => 'required|exists:subjects,id',
             'lesson_title' => 'required|min:3',
-            'lesson_des' => 'required|min:10'
+            'lesson_description' => 'required|min:10',
+            'header_image' => 'nullable|mimes:jpeg,png|file|max:10000',
         ];
     }
 }

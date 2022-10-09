@@ -9,6 +9,9 @@
                         Info of Lesson
                     </h4>
                     <hr>
+                    @if(isset($lesson->header_image))
+                        <img class="header_image mb-3" src="{{asset('storage/header_image/'.$lesson->header_image)}}" alt="">
+                    @endif
                     <h3 class="text-secondary">{{$lesson->title}}</h3>
                     <div class="">
                         <span class="fw-bolder"><i class="uil-backpack"></i>{{$lesson->getGrade->title}}</span>

@@ -26,7 +26,7 @@ Route::get('/getSubjects/{id}',[LessonController::class,'getSubjects'])->name('l
 
 
 
-Route::middleware(["auth","isBaned"])->group(function (){
+Route::middleware(["auth","isBaned"])->prefix('dashboard')->group(function (){
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

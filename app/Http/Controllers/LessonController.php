@@ -55,15 +55,22 @@ class LessonController extends Controller
     public function store(StoreLessonRequest $request)
     {
 
-
         $lesson = new Lesson();
         $lesson->grade_id = $request->grade;
         $lesson->subject_id = $request->subject;
         $lesson->title = $request->lesson_title;
         $lesson->slug = Str::slug($request->lesson_title);
-        $lesson->description = $request->lesson_des;
-        $lesson->excerpt = Str::words($request->lesson_des,10," .....");
+        $lesson->description = $request->lesson_description;
+        $lesson->excerpt = Str::substrReplace($request->lesson_description,"...",50);
         $lesson->user_id = Auth::id();
+
+
+
+        if ($request->hasFile('header_image')){
+            $newName = uniqid()."_header_image.".$request->file('header_image')->extension();
+            $request->file('header_image')->storeAs('public/header_image',$newName);
+            $lesson->header_image = $newName;
+        }
         $lesson->save();
 
         return redirect()->route('lesson.create');

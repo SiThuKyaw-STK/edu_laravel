@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('description');
             $table->text('excerpt');
+            $table->string('header_image')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
