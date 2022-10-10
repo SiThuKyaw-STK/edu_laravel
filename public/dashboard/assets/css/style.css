@@ -302,3 +302,8 @@ span + span {
     margin-top: 0.5%;
     border-radius: 5px;
 }
+.lesson_image{
+    height: 100px;
+    border-radius: 5px;
+    margin-top: 0.5%;
+}

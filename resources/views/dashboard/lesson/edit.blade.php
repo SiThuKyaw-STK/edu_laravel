@@ -10,12 +10,13 @@
                     Edit Section
                 </h4>
                 <hr>
-                <form action="{{route('lesson.update',$lesson->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('lesson.update',$lesson->id)}}" id="postUpdateForm" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
+                </form>
                     <div class="mb-3">
                         <label class="form-label">Select Grade</label>
-                        <select type="text" name="grade" id="grade" class="form-select @error('grade') is-invalid @enderror">
+                        <select form="postUpdateForm" type="text" name="grade" id="grade" class="form-select @error('grade') is-invalid @enderror">
                             <option value="-1">Grade</option>
                             @forelse($grades as $grade)
                                 <option
@@ -34,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Select Subject</label>
-                        <select type="text" name="subject" id="subject" class="form-select @error('subject') is-invalid @enderror">
+                        <select form="postUpdateForm" type="text" name="subject" id="subject" class="form-select @error('subject') is-invalid @enderror">
                             <option >Subject</option>
                         </select>
                         @error("subject")
@@ -45,9 +46,9 @@
                         <label for="header_image">Header Image</label>
                         <input
                             type="file"
-                            multiple
                             class="form-control @error('header_image') is-invalid @enderror"
                             id="header_image"
+                            form="postUpdateForm"
                             name="header_image">
                         @error('header_image')
                         <div class="invalid-feedback">{{$message}}</div>
@@ -62,6 +63,7 @@
                             type="text"
                             value="{{old('lesson_title',$lesson->title)}}"}}
                             name="lesson_title"
+                            form="postUpdateForm"
                             class="form-control
                             @error('lesson_title') is-invalid @enderror">
                         @error("lesson_title")
@@ -69,11 +71,39 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <div>
+                            <label for="lesson_images">Lesson Images</label>
+                            <input
+                                type="file"
+                                multiple
+                                class="form-control @error('lesson_images.*') is-invalid @enderror"
+                                id="lesson_images"
+                                form="postUpdateForm"
+                                name="lesson_images[]">
+                            @error('lesson_images.*')
+                            <div class="invalid-feedback">{{$message}}</div>
+                            @enderror
+                        </div>
+                        <div>
+                            @foreach($lesson->getLessonImages as $photo)
+                                <div class="d-inline-block position-relative mt-1">
+                                    <img class="lesson_image" src="{{asset('storage/lesson_image/'.$photo->name)}}" alt="">
+                                    <form class="d-inline-block" action="{{route('photo.destroy',$photo->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-sm btn-danger position-absolute bottom-0 end-0"><i class="uil-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Lesson Description</label>
                         <textarea
                             class="form-control
                             @error('lesson_description') is-invalid @enderror"
                             name="lesson_description"
+                            form="postUpdateForm"
                             id=""
                             cols="30"
                             rows="10">{{old('lesson_description',$lesson->description)}}</textarea>
@@ -82,8 +112,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-secondary">Update Post</button>
-                </form>
+                    <button form="postUpdateForm" type="submit" class="btn btn-secondary float-end">Update Post</button>
             </div>
         </div>
     </div>

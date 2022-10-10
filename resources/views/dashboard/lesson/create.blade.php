@@ -44,7 +44,6 @@
                             <label for="header_image">Header Image</label>
                             <input
                                 type="file"
-                                multiple
                                 class="form-control @error('header_image') is-invalid @enderror"
                                 id="header_image"
                                 name="header_image">
@@ -57,6 +56,18 @@
                             <input value="{{old('lesson_title')}}" type="text" name="lesson_title" class="form-control @error('lesson_title') is-invalid @enderror">
                             @error("lesson_title")
                             <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="lesson_images">Lesson Images</label>
+                            <input
+                                type="file"
+                                multiple
+                                class="form-control @error('lesson_images.*') is-invalid @enderror"
+                                id="lesson_images"
+                                name="lesson_images[]">
+                            @error('lesson_images.*')
+                            <div class="invalid-feedback">{{$message}}</div>
                             @enderror
                         </div>
                         <div class="mb-3">

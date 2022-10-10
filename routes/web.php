@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
@@ -18,6 +19,10 @@ use App\Http\Controllers\SubjectController;
 
 Route::get('/', function () {
     return view('frontend.welcome');
+});
+
+Route::get('/file', function () {
+    return \Illuminate\Support\Facades\Storage::files('public');
 });
 
 Auth::routes();
@@ -40,6 +45,7 @@ Route::middleware(["auth","isBaned"])->prefix('dashboard')->group(function (){
     });
 
     Route::resource('/lesson',LessonController::class);
+    Route::resource('/photo',PhotoController::class);
     Route::resource('/subject',SubjectController::class)->middleware('isAdminOrEditor');
 
 });

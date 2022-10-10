@@ -18,4 +18,7 @@ class Lesson extends Model
     public function getUser(){
         return $this->belongsTo(User::class,'user_id');
     }
+    public function getLessonImages(){
+        return $this->hasMany(Photo::class,'lesson_id');
+    }
 }

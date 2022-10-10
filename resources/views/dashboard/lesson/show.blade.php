@@ -4,10 +4,13 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="m-0 h4">
-                        <i class="uil-info-circle text-secondary"></i>
-                        Info of Lesson
-                    </h4>
+                    <div class="d-flex justify-content-between">
+                        <h4 class="m-0 h4">
+                            <i class="uil-info-circle text-secondary"></i>
+                            Info of Lesson
+                        </h4>
+                        <a href="{{route('lesson.edit',$lesson->id)}}" class="btn btn-sm btn-secondary">Edit</a>
+                    </div>
                     <hr>
                     @if(isset($lesson->header_image))
                         <img class="header_image mb-3" src="{{asset('storage/header_image/'.$lesson->header_image)}}" alt="">
@@ -20,6 +23,11 @@
                         <span class="fw-bolder"><i class="uil-calendar-alt"></i>{{$lesson->created_at->diffForHumans()}}</span>
                     </div>
                     <p style="text-align: justify">{{$lesson->description}}</p>
+
+                    @foreach($lesson->getLessonImages as $photo)
+                        <img class="lesson_image" src="{{asset('storage/lesson_image/'.$photo->name)}}" alt="">
+                    @endforeach
+
                     <hr>
                     <a href="{{route('lesson.index')}}" class="btn btn-sm btn-outline-secondary float-end">All Lesson</a>
                 </div>

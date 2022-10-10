@@ -29,6 +29,7 @@ class UpdateLessonRequest extends FormRequest
             'lesson_title' => 'required|min:3|unique:lessons,title,'.$this->route('lesson')->id,
             'lesson_description' => 'required|min:10',
             'header_image' => 'nullable|mimes:jpeg,png|file|max:10000',
+            'lesson_images.*' => 'nullable|mimes:jpeg,png|file|max:10000',
         ];
     }
 }

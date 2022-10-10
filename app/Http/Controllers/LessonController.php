@@ -6,6 +6,7 @@ use App\Models\Grade;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use App\Models\Photo;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -56,6 +57,7 @@ class LessonController extends Controller
     public function store(StoreLessonRequest $request)
     {
 
+//        save lesson
         $lesson = new Lesson();
         $lesson->grade_id = $request->grade;
         $lesson->subject_id = $request->subject;
@@ -65,14 +67,26 @@ class LessonController extends Controller
         $lesson->excerpt = Str::substrReplace($request->lesson_description,"...",50);
         $lesson->user_id = Auth::id();
 
-
-
         if ($request->hasFile('header_image')){
             $newName = uniqid()."_header_image.".$request->file('header_image')->extension();
             $request->file('header_image')->storeAs('public/header_image',$newName);
             $lesson->header_image = $newName;
         }
         $lesson->save();
+
+//        save lesson photo
+
+        foreach ($request->lesson_images as $lesson_image){
+            //        1.save to storage
+            $newName = uniqid()."_lesson_image.".$lesson_image->extension();
+            $lesson_image->storeAs('public/lesson_image',$newName);
+            //        2.save to db
+            $photo = new Photo();
+            $photo->lesson_id = $lesson->id;
+            $photo->name = $newName;
+            $photo->save();
+        }
+
 
         return redirect()->route('lesson.create');
     }
@@ -118,14 +132,13 @@ class LessonController extends Controller
             return abort(401);
         }
 
+//        update lesson
         $lesson->grade_id = $request->grade;
         $lesson->subject_id = $request->subject;
         $lesson->title = $request->lesson_title;
         $lesson->slug = Str::slug($request->lesson_title);
         $lesson->description = $request->lesson_description;
         $lesson->excerpt = Str::substrReplace($request->lesson_description,"...",50);
-
-
 
         if ($request->hasFile('header_image')){
 //            delete old photo
@@ -138,7 +151,20 @@ class LessonController extends Controller
         }
         $lesson->update();
 
-        return redirect()->route('lesson.index');
+        //        update lesson photo
+
+        foreach ($request->lesson_images as $lesson_image){
+            //        1.save to storage
+            $newName = uniqid()."_lesson_image.".$lesson_image->extension();
+            $lesson_image->storeAs('public/lesson_image',$newName);
+            //        2.save to db
+            $photo = new Photo();
+            $photo->lesson_id = $lesson->id;
+            $photo->name = $newName;
+            $photo->save();
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -152,6 +178,15 @@ class LessonController extends Controller
         if (Gate::denies('delete',$lesson)){
             return abort(401);
         }
+        if ($lesson->header_image){
+            Storage::delete('public/header_image/'.$lesson->header_image);
+        }
+
+        foreach ($lesson->getLessonImages as $photo){
+            Storage::delete('public/lesson_image/'.$photo->name);
+            $photo->delete();
+        }
+
         $lesson->delete();
         return redirect()->route('lesson.index');
     }
