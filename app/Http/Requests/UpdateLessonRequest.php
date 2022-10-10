@@ -27,7 +27,8 @@ class UpdateLessonRequest extends FormRequest
             'grade' => 'required|exists:grades,id',
             'subject' => 'required|exists:subjects,id',
             'lesson_title' => 'required|min:3|unique:lessons,title,'.$this->route('lesson')->id,
-            'lesson_des' => 'required|min:10'
+            'lesson_description' => 'required|min:10',
+            'header_image' => 'nullable|mimes:jpeg,png|file|max:10000',
         ];
     }
 }

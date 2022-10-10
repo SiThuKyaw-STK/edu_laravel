@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class LessonController extends Controller
@@ -113,7 +114,6 @@ class LessonController extends Controller
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
-
         if (Gate::denies('update',$lesson)){
             return abort(401);
         }
@@ -122,8 +122,20 @@ class LessonController extends Controller
         $lesson->subject_id = $request->subject;
         $lesson->title = $request->lesson_title;
         $lesson->slug = Str::slug($request->lesson_title);
-        $lesson->description = $request->lesson_des;
-        $lesson->excerpt = Str::words($request->lesson_des,10,"....");
+        $lesson->description = $request->lesson_description;
+        $lesson->excerpt = Str::substrReplace($request->lesson_description,"...",50);
+
+
+
+        if ($request->hasFile('header_image')){
+//            delete old photo
+            Storage::delete('public/header_image/'.$lesson->header_image);
+
+//            update and upload new photo
+            $newName = uniqid()."_header_image.".$request->file('header_image')->extension();
+            $request->file('header_image')->storeAs('public/header_image',$newName);
+            $lesson->header_image = $newName;
+        }
         $lesson->update();
 
         return redirect()->route('lesson.index');
