@@ -21,9 +21,6 @@ Route::get('/', function () {
     return view('frontend.welcome');
 });
 
-Route::get('/file', function () {
-    return \Illuminate\Support\Facades\Storage::files('public');
-});
 
 Auth::routes();
 

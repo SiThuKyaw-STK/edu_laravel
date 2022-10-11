@@ -115,5 +115,17 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
         </li>
         @endcan
 
+        <div class="my-3"></div>
+        <li class="sideBar__header text-white">
+            <i class="uil-picture me-2"></i> Gallery
+        </li>
+        <li class="sideBar__item">
+            <ul id="photos" class="">
+                <li class="sideBar__item">
+                    <a href="{{route('photo.index')}}" class="sideBar__link"><i class="uil-picture me-1"></i>Photos</a>
+                </li>
+            </ul>
+        </li>
+
     </ul>
 </nav>

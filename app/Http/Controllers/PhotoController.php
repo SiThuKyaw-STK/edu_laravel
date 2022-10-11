@@ -16,7 +16,8 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        $getPhotos = new Photo();
+        return view('dashboard.photo.index',compact('getPhotos'));
     }
 
     /**

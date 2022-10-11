@@ -45,4 +45,11 @@ class User extends Authenticatable
     public function isAuthor(){
         return $this->role == 2;
     }
+
+    public function getLessonImages(){
+        return $this->hasManyThrough(Photo::class,Lesson::class);
+    }
+    public function getHeaderImage(){
+        return $this->hasMany(Lesson::class);
+    }
 }
