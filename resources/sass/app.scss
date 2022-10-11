@@ -6,10 +6,10 @@ $warning : #F4D7C7;
 $info : #00667D;
 
 // Bootstrap
-@import 'bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 // Icon
-@import "@iconscout/unicons/css/line.css";
+@import "../../node_modules/@iconscout/unicons/css/line.css";
 
 // DataTable
-@import "datatables.net-dt/css/jquery.dataTables.min.css";
+@import "../../node_modules/datatables.net-dt/css/jquery.dataTables.min.css";
