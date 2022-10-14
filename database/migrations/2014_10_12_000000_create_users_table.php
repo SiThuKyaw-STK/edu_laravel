@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('isBaned',[0,1])->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('user_image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

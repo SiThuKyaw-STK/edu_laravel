@@ -14,7 +14,11 @@
         </form>
     </div>
     <div class="user__info">
-        <img src="assets/img/user1.jpg" alt="">
+        @if(\Illuminate\Support\Facades\Auth::user()->user_image == null)
+            <img src="{{asset('dashboard/assets/img/user.png')}}" alt="">
+        @else
+            <img src="" alt="">
+        @endif
         <span class="d-inline-flex align-items-center">
             {{\Illuminate\Support\Facades\Auth::user()->name}}
             <i class="feather-chevron-down fw-bolder ms-2"></i>
