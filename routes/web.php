@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
@@ -44,5 +45,11 @@ Route::middleware(["auth","isBaned"])->prefix('dashboard')->group(function (){
     Route::resource('/lesson',LessonController::class);
     Route::resource('/photo',PhotoController::class);
     Route::resource('/subject',SubjectController::class)->middleware('isAdminOrEditor');
+
+    Route::prefix('profile')->group(function (){
+        Route::get('/',[UserProfileController::class,'profile'])->name('user-profile.profile');
+        Route::get('/edit-photo',[UserProfileController::class,'editPhoto'])->name('user-profile.editPhoto');
+        Route::post('/change-photo',[UserProfileController::class,'changePhoto'])->name('user-profile.changePhoto');
+    });
 
 });

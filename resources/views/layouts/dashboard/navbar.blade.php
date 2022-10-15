@@ -14,17 +14,13 @@
         </form>
     </div>
     <div class="user__info">
-        @if(\Illuminate\Support\Facades\Auth::user()->user_image == null)
-            <img src="{{asset('dashboard/assets/img/user.png')}}" alt="">
-        @else
-            <img src="" alt="">
-        @endif
-        <span class="d-inline-flex align-items-center">
-            {{\Illuminate\Support\Facades\Auth::user()->name}}
+            <img src="{{ isset(Auth::user()->user_image) ? asset('storage/profile/'.Auth::user()->user_image) : asset('dashboard/assets/img/user.png') }}" alt="">
+            <span class="d-inline-flex align-items-center">
+            {{Auth::user()->name}}
             <i class="feather-chevron-down fw-bolder ms-2"></i>
         </span>
         <ul class="shadow-sm">
-            <li><a href="#"><i class="feather-user me-1"></i> Profile</a></li>
+            <li><a href="{{route('user-profile.profile')}}"><i class="feather-user me-1"></i>Profile</a></li>
             <li><a href="#" class="d-flex align-items-center"><i class="feather-clock me-2"></i>Analytics</a></li>
             <hr style="margin: .5rem">
             <li><a href="#" class="d-flex align-items-center"><i class="feather-settings me-2"></i>Setting & Privacy</a></li>
