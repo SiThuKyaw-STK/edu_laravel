@@ -23,7 +23,8 @@ class UserProfileController extends Controller
 //        ]);
 
         if ($request->hasFile('photo')) {
-            $image = Image::make($request->file('photo'))->resizeCanvas(500, 500);
+
+            $image = Image::make($request->file('photo'))->fit(500, 500)->encode('jpg');
 
 
             $dir = "public/profile/";
@@ -31,13 +32,13 @@ class UserProfileController extends Controller
             Storage::delete($dir . Auth::user()->user_image);
 
             $newName = uniqid() . "_photo." . $request->file("photo")->getClientOriginalExtension();
-            $image->save('public');
+            Storage::put("public/profile/".$newName,$image);
 
-            $user = User::find(Auth::id());
-            $user->user_image = $newName;
-            $user->update();
-
-            return redirect()->route("user-profile.editPhoto");
         }
+        $user = User::find(Auth::id());
+        $user->user_image = $newName;
+        $user->update();
+
+        return redirect()->route("user-profile.editPhoto");
     }
 }

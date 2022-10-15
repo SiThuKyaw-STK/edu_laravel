@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
         Storage::delete($header_image);
         $lesson_image = Storage::allFiles('public/lesson_image');
         Storage::delete($lesson_image);
+        $profile = Storage::allFiles('public/profile');
+        Storage::delete($profile);
 
         echo "\e[93mphoto deleted \n";
     }
