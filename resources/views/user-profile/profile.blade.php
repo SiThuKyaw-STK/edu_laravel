@@ -1,7 +1,7 @@
 @extends('layouts.main.dashboard')
 @section('content')
     <div class="row m-0">
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <div>

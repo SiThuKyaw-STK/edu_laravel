@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class UserProfileController extends Controller
 {
@@ -17,21 +18,26 @@ class UserProfileController extends Controller
         return view('user-profile.edit-photo');
     }
     public function changePhoto(Request $request){
-        $request->validate([
-            "photo" => "required|mimetypes:image/jpeg,image/png|dimensions:ratio=1/1|file|max:2500"
-        ]);
-        $dir="public/profile/";
+//        $request->validate([
+//            "photo" => "required|mimetypes:image/jpeg,image/png|dimensions:ratio=1/1|file|max:2500"
+//        ]);
 
-        Storage::delete($dir.Auth::user()->user_image);
+        if ($request->hasFile('photo')) {
+            $image = Image::make($request->file('photo'))->resizeCanvas(500, 500);
 
-        $newName = uniqid()."_photo.".$request->file("photo")->getClientOriginalExtension();
-        $request->file("photo")->storeAs($dir,$newName);
 
-        $user = User::find(Auth::id());
-        $user->user_image = $newName;
-        $user->update();
+            $dir = "public/profile/";
 
-        return redirect()->route("user-profile.editPhoto");
+            Storage::delete($dir . Auth::user()->user_image);
 
+            $newName = uniqid() . "_photo." . $request->file("photo")->getClientOriginalExtension();
+            $image->save('public');
+
+            $user = User::find(Auth::id());
+            $user->user_image = $newName;
+            $user->update();
+
+            return redirect()->route("user-profile.editPhoto");
+        }
     }
 }

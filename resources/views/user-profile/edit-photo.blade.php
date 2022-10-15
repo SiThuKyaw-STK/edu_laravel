@@ -1,7 +1,7 @@
 @extends('layouts.main.dashboard')
 @section('content')
     <div class="row m-0">
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <img src="{{ isset(Auth::user()->user_image) ? asset('storage/profile/'.Auth::user()->user_image) : asset('dashboard/assets/img/user.png') }}" class="d-block w-50 mx-auto rounded-circle my-3" alt="">

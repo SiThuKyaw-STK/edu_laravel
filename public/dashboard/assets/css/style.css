@@ -206,7 +206,7 @@ span + span {
     cursor: pointer;
 }
 .user__info img{
-    width: 50px;
+    width: 30px;
     border-radius: 50%;
 }
 .user__info span{

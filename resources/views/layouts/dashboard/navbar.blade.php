@@ -14,11 +14,13 @@
         </form>
     </div>
     <div class="user__info">
-            <img src="{{ isset(Auth::user()->user_image) ? asset('storage/profile/'.Auth::user()->user_image) : asset('dashboard/assets/img/user.png') }}" alt="">
-            <span class="d-inline-flex align-items-center">
-            {{Auth::user()->name}}
+       <div>
+           <img src="{{ isset(Auth::user()->user_image) ? asset('storage/profile/'.Auth::user()->user_image) : asset('dashboard/assets/img/user.png') }}" alt="">
+           <span class="d-inline-flex align-items-center">
+             {{Auth::user()->name}}
             <i class="feather-chevron-down fw-bolder ms-2"></i>
-        </span>
+           </span>
+       </div>
         <ul class="shadow-sm">
             <li><a href="{{route('user-profile.profile')}}"><i class="feather-user me-1"></i>Profile</a></li>
             <li><a href="#" class="d-flex align-items-center"><i class="feather-clock me-2"></i>Analytics</a></li>

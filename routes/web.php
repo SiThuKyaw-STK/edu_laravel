@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\SubjectController;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,10 @@ Route::get('/', function () {
     return view('frontend.welcome');
 });
 
+Route::get('/image', function() {
+    $img = Image::make('https://t3.ftcdn.net/jpg/04/04/73/24/360_F_404732411_zuaDyeeDSsFuc5zMxEI3eySXwtTG6awv.jpg')->resizeCanvas(300, 300);
+    return $img->response('jpg');
+});
 
 Auth::routes();
 
