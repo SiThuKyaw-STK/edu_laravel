@@ -23,10 +23,6 @@ Route::get('/', function () {
     return view('frontend.welcome');
 });
 
-Route::get('/image', function() {
-    $img = Image::make('https://t3.ftcdn.net/jpg/04/04/73/24/360_F_404732411_zuaDyeeDSsFuc5zMxEI3eySXwtTG6awv.jpg')->resizeCanvas(300, 300);
-    return $img->response('jpg');
-});
 
 Auth::routes();
 
@@ -55,6 +51,8 @@ Route::middleware(["auth","isBaned"])->prefix('dashboard')->group(function (){
         Route::get('/',[UserProfileController::class,'profile'])->name('user-profile.profile');
         Route::get('/edit-photo',[UserProfileController::class,'editPhoto'])->name('user-profile.editPhoto');
         Route::post('/change-photo',[UserProfileController::class,'changePhoto'])->name('user-profile.changePhoto');
+        Route::post('/change-name',[UserProfileController::class,'changeName'])->name('user-profile.changeName');
+        Route::post('/change-email',[UserProfileController::class,'changeEmail'])->name('user-profile.changeEmail');
     });
 
 });

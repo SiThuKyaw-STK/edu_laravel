@@ -36,6 +36,6 @@ class DatabaseSeeder extends Seeder
         $profile = Storage::allFiles('public/profile');
         Storage::delete($profile);
 
-        echo "\e[93mphoto deleted \n";
+        echo "\e[93mAll photo deleted \n";
     }
 }
