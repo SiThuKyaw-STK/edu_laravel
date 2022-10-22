@@ -1,5 +1,8 @@
 @extends('layouts.main.dashboard')
 @section('content')
+    <x-bread-crumb>
+        <li class="breadcrumb-item active" aria-current="page">Users</li>
+    </x-bread-crumb>
     <div class="row m-0">
         <div class="col-lg-12">
             <div class="card">
@@ -45,11 +48,13 @@
                                             <input type="hidden" name="id" value="{{$user->id}}">
                                             <button class="btn btn-sm btn-success">Restore</button>
                                         </form>
+                                    @elseif($user->role == 0)
+                                        <button class="btn btn-secondary" disabled>This is an admin</button>
                                     @else
                                         <form class="d-inline-block" action="{{route('user.ban')}}" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{$user->id}}">
-                                            <button class="btn btn-sm btn-danger">Ban</button>
+                                            <button class="btn btn-sm btn-danger">Ban This User!!!</button>
                                         </form>
                                     @endif
                                 </td>

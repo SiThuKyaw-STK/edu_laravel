@@ -1,5 +1,9 @@
 @extends('layouts.main.dashboard')
 @section('content')
+    <x-bread-crumb>
+        <li class="breadcrumb-item fw-bolder" aria-current="page"><a class="text-secondary" href="{{route('user-profile.profile')}}">Profile</a></li>
+        <li class="breadcrumb-item active">Edit Profile</li>
+    </x-bread-crumb>
     <div class="row m-0">
         <div class="col-lg-4">
             <div class="card">

@@ -1,6 +1,9 @@
 @extends('layouts.main.dashboard')
 
 @section('content')
+    <x-bread-crumb>
+
+    </x-bread-crumb>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

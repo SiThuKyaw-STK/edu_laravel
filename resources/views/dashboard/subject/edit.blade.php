@@ -1,11 +1,15 @@
 @extends('layouts.main.dashboard')
 
 @section('content')
+    <x-bread-crumb>
+        <li class="breadcrumb-item fw-bolder"><a href="{{route('subject.create')}}" class="text-secondary">Create Subjects</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{$subject->grade->title}}'s {{$subject->title}}</li>
+    </x-bread-crumb>
     <div class="row m-0">
         <div class="col-12 col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h4>Edit {{$subject->grade->title}}'s {{$subject->title}}</h4>
+                    <h4>Edit <span class="text-secondary">{{$subject->grade->title}}'s {{$subject->title}}</span></h4>
                     <hr>
                     <form action="{{route('subject.update',$subject->id)}}" method="post">
                         @csrf

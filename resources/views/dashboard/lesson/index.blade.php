@@ -1,6 +1,9 @@
 @extends('layouts.main.dashboard')
 
 @section('content')
+    <x-bread-crumb>
+        <li class="breadcrumb-item active" aria-current="page">Lessons</li>
+    </x-bread-crumb>
     <div class="row m-0">
         <div class="col-12">
             <div class="card">

@@ -1,6 +1,9 @@
 @extends('layouts.main.dashboard')
 
 @section('content')
+    <x-bread-crumb>
+        <li class="breadcrumb-item active" aria-current="page">User Uploaded Photos</li>
+    </x-bread-crumb>
 <div class="row m-0">
     <div class="col-lg-12">
         <div class="card">

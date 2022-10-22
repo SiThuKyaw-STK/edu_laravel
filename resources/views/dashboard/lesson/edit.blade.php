@@ -1,6 +1,10 @@
 @extends('layouts.main.dashboard')
 
 @section('content')
+    <x-bread-crumb>
+        <li class="breadcrumb-item fw-bolder"><a href="{{route('lesson.index')}}" class="text-secondary">Lessons</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{$lesson->title}}</li>
+    </x-bread-crumb>
 <div class="row m-0">
     <div class="col-lg-12">
         <div class="card">
