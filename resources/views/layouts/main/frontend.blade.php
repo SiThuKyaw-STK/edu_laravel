@@ -7,9 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
+    @stack('style')
     @vite(['resources/sass/theme.scss', 'resources/js/theme.js'])
 </head>
 <body>
 @yield('content')
+
+
+@stack('script')
 </body>
 </html>

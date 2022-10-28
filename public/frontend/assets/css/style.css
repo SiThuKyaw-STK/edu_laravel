@@ -20,3 +20,28 @@
     width: 80%;
     margin: auto;
 }
+.testimonials__content p:first-child{
+    background: white;
+    font-size: 20px;
+    border-radius: 45px 0px 45px 0;
+    padding: 10px 15px;
+}
+.testimonials__user img{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 5px;
+}
+.swiper-wrapper{
+    height: auto !important;
+}
+.swiper-button-next, .swiper-button-prev{
+    top: 70% !important;
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev{
+    color: #00C896 !important;
+}
+.swiper-button-prev, .swiper-rtl .swiper-button-next{
+    color: #00C896 !important;
+}
