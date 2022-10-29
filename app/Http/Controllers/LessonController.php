@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class LessonController extends Controller
 {
@@ -69,8 +70,12 @@ class LessonController extends Controller
         $lesson->user_id = Auth::id();
 
         if ($request->hasFile('header_image')){
+            $image = Image::make($request->file('header_image'))->resize(500,500,function ($x){
+                $x->aspectRatio();
+                $x->upsize();
+            })->encode('jpg');
             $newName = uniqid()."_header_image.".$request->file('header_image')->extension();
-            $request->file('header_image')->storeAs('public/header_image',$newName);
+            Storage::put("public/header_image/".$newName,$image);
             $lesson->header_image = $newName;
         }
         $lesson->save();
@@ -149,8 +154,12 @@ class LessonController extends Controller
             Storage::delete('public/header_image/'.$lesson->header_image);
 
 //            update and upload new photo
+            $image = Image::make($request->file('header_image'))->resize(500,500,function ($x){
+                $x->aspectRatio();
+                $x->upsize();
+            })->encode('jpg');
             $newName = uniqid()."_header_image.".$request->file('header_image')->extension();
-            $request->file('header_image')->storeAs('public/header_image',$newName);
+            Storage::put("public/header_image/".$newName,$image);
             $lesson->header_image = $newName;
         }
         $lesson->update();
