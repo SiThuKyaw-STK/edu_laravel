@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Grade;
 use App\Http\Requests\StoreGradeRequest;
 use App\Http\Requests\UpdateGradeRequest;
+use App\Models\Lesson;
 
 class GradeController extends Controller
 {
@@ -15,8 +16,7 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $grades = Grade::all();
-        return view('frontend.welcome',compact('grades'));
+
     }
 
     /**

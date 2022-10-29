@@ -15,7 +15,7 @@
                 <p class="text-white mt-3 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
                     aperiam blanditiis commodi, doloremque ex in iusto modi, molestias mollitia officia pariatur qui
                     reiciendis sint veniam voluptates. Culpa cupiditate molestias odio?</p>
-                <a href="#" class="btn btn-primary fw-bold text-uppercase">Lessons</a>
+                <a href="{{route('frontend.lessons')}}" class="btn btn-primary fw-bold text-uppercase">Lessons</a>
             </div>
         </div>
     </section>
@@ -99,35 +99,15 @@
         <div class="container">
             <div class="row">
                 <h4 class="text-primary text-uppercase fw-bold mt-5">lessons</h4>
-                {{$grades}}
+                @foreach($grades as $grade)
                 <div class="col-lg-6">
                     <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
-                        <h1>Grade 10</h1>
+                        <h1>{{$grade->title}}</h1>
                         <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
-                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
+                        <a href="#" class="btn btn-dark mt-4">Learn {{$grade->title}}</a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
-                        <h1>Grade 10</h1>
-                        <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
-                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
-                        <h1>Grade 10</h1>
-                        <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
-                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
-                        <h1>Grade 10</h1>
-                        <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
-                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

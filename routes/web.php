@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +20,12 @@ use Intervention\Image\Facades\Image;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.welcome');
-});
+//Route::get('/', function () {
+//    return view('frontend.welcome');
+//});
 
+Route::get('/',[\App\Http\Controllers\FrontEndController::class,'welcome'])->name('frontend.welcome');
+Route::get('/lessons',[\App\Http\Controllers\FrontEndController::class,'lessons'])->name('frontend.lessons');
 
 Auth::routes();
 
@@ -43,6 +46,7 @@ Route::middleware(["auth","isBaned"])->prefix('dashboard')->group(function (){
         Route::post('/restore',[\App\Http\Controllers\UserController::class,'restore'])->name('user.restore');
     });
 
+    Route::resource('/grade',GradeController::class);
     Route::resource('/lesson',LessonController::class);
     Route::resource('/photo',PhotoController::class);
     Route::resource('/subject',SubjectController::class)->middleware('isAdminOrEditor');

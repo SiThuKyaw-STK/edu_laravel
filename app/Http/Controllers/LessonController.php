@@ -8,6 +8,7 @@ use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Photo;
 use App\Models\Subject;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
@@ -76,16 +77,19 @@ class LessonController extends Controller
 
 //        save lesson photo
 
-        foreach ($request->lesson_images as $lesson_image){
-            //        1.save to storage
-            $newName = uniqid()."_lesson_image.".$lesson_image->extension();
-            $lesson_image->storeAs('public/lesson_image',$newName);
-            //        2.save to db
-            $photo = new Photo();
-            $photo->lesson_id = $lesson->id;
-            $photo->name = $newName;
-            $photo->save();
+        if ($request->lesson_images){
+            foreach ($request->lesson_images as $lesson_image){
+                //        1.save to storage
+                $newName = uniqid()."_lesson_image.".$lesson_image->extension();
+                $lesson_image->storeAs('public/lesson_image',$newName);
+                //        2.save to db
+                $photo = new Photo();
+                $photo->lesson_id = $lesson->id;
+                $photo->name = $newName;
+                $photo->save();
+            }
         }
+
 
 
         return redirect()->route('lesson.create');
@@ -153,16 +157,19 @@ class LessonController extends Controller
 
         //        update lesson photo
 
-        foreach ($request->lesson_images as $lesson_image){
-            //        1.save to storage
-            $newName = uniqid()."_lesson_image.".$lesson_image->extension();
-            $lesson_image->storeAs('public/lesson_image',$newName);
-            //        2.save to db
-            $photo = new Photo();
-            $photo->lesson_id = $lesson->id;
-            $photo->name = $newName;
-            $photo->save();
+        if ($request->lesson_images){
+            foreach ($request->lesson_images as $lesson_image){
+                //        1.save to storage
+                $newName = uniqid()."_lesson_image.".$lesson_image->extension();
+                $lesson_image->storeAs('public/lesson_image',$newName);
+                //        2.save to db
+                $photo = new Photo();
+                $photo->lesson_id = $lesson->id;
+                $photo->name = $newName;
+                $photo->save();
+            }
         }
+
 
         return redirect()->back();
     }
