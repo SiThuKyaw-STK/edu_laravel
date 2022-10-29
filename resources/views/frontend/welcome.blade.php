@@ -95,6 +95,42 @@
             </div>
         </div>
     </section>
+    <section class="lessons bg-black">
+        <div class="container">
+            <div class="row">
+                <h4 class="text-primary text-uppercase fw-bold mt-5">lessons</h4>
+                {{$grades}}
+                <div class="col-lg-6">
+                    <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
+                        <h1>Grade 10</h1>
+                        <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
+                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
+                        <h1>Grade 10</h1>
+                        <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
+                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
+                        <h1>Grade 10</h1>
+                        <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
+                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
+                        <h1>Grade 10</h1>
+                        <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
+                        <a href="#" class="btn btn-dark mt-4">Learn Grade 10</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection
 
