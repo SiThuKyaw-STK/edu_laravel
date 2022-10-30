@@ -45,3 +45,8 @@
 .swiper-button-prev, .swiper-rtl .swiper-button-next{
     color: #00C896 !important;
 }
+.lesson__showDetail img{
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 5px;
+}

@@ -33,6 +33,7 @@ Route::get('/image', function() {
 });
 Route::get('/',[\App\Http\Controllers\FrontEndController::class,'welcome'])->name('frontend.welcome');
 Route::get('/lessons',[\App\Http\Controllers\FrontEndController::class,'lessons'])->name('frontend.lessons');
+Route::get('/lesson-show/{id}',[\App\Http\Controllers\FrontEndController::class,'lessonShow'])->name('frontend.lesson.show');
 
 Auth::routes();
 

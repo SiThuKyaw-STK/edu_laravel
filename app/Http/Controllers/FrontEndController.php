@@ -19,4 +19,10 @@ class FrontEndController extends Controller
         })->with(['getGrade','getSubject','getUser','getLessonImages'])->latest('id')->paginate(8);
         return view('frontend.lessons',compact('grades','lessons'));
     }
+
+    public function lessonShow($id){
+        $lesson = Lesson::find($id);
+        $grades = Grade::all();
+        return view('frontend.lesson_show',compact('lesson','grades'));
+    }
 }

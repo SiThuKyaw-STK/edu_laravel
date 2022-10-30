@@ -23,16 +23,16 @@
             @foreach($lessons as $lesson)
                 <div class="col-lg-3 mt-3">
                     <div class="">
-                        <div class="card h-100">
+                        <div class="card">
                             @if($lesson->header_image)
                                 <img style="height: 200px" src="{{asset('storage/header_image/'.$lesson->header_image)}}" class="card-img-top" alt="...">
                             @else
                                 <img style="height: 200px" src="{{asset('frontend/assets/img/photo.jpg')}}" alt="">
                             @endif
                             <div class="card-body">
-                                <h6 class="card-title fw-bolder">{{$lesson->title}}</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary float-end">learn more</a>
+                                <h6 class="card-title fw-bolder">{{$lesson->excerpt_title}}</h6>
+                                <p class="card-text">{{$lesson->excerpt}}</p>
+                                <a href="{{route('frontend.lesson.show',$lesson->id)}}" class="btn btn-primary float-end">learn more</a>
                             </div>
                         </div>
                     </div>

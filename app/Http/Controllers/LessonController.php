@@ -64,6 +64,7 @@ class LessonController extends Controller
         $lesson->grade_id = $request->grade;
         $lesson->subject_id = $request->subject;
         $lesson->title = $request->lesson_title;
+        $lesson->excerpt_title = Str::substrReplace($request->lesson_title,"...",25);
         $lesson->slug = Str::slug($request->lesson_title);
         $lesson->description = $request->lesson_description;
         $lesson->excerpt = Str::substrReplace($request->lesson_description,"...",50);
@@ -145,6 +146,7 @@ class LessonController extends Controller
         $lesson->grade_id = $request->grade;
         $lesson->subject_id = $request->subject;
         $lesson->title = $request->lesson_title;
+        $lesson->excerpt_title = Str::substrReplace($request->lesson_title,"...",25);
         $lesson->slug = Str::slug($request->lesson_title);
         $lesson->description = $request->lesson_description;
         $lesson->excerpt = Str::substrReplace($request->lesson_description,"...",50);

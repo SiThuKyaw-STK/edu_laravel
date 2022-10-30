@@ -29,9 +29,10 @@ class LessonFactory extends Factory
             "grade_id" => $ranGrade,
             "subject_id" => $ranSubject,
             "title" => $title,
+            "excerpt_title" => Str::substrReplace($title,"...",25),
             "slug" => Str::slug($title),
             "description" => $description,
-            "excerpt" => Str::words($description,10,"...."),
+            "excerpt" => Str::substrReplace($description,"...",50),
             "user_id" => User::inRandomOrder()->first()->id,
         ];
     }

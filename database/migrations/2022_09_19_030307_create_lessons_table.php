@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('grade_id');
             $table->foreignId('subject_id');
             $table->string('title');
+            $table->string('excerpt_title');
             $table->string('slug');
             $table->longText('description');
             $table->text('excerpt');
