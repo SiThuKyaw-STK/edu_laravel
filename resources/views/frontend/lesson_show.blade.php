@@ -22,18 +22,18 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-lg-10">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
                             {{--Header Image--}}
-                            <div class="text-center">
-                                @if($lesson->header_image)
+                            @if($lesson->header_image)
+                                <div class="text-center">
                                     <img class="" src="{{asset('storage/header_image/'.$lesson->header_image)}}"
                                          alt="">
-                                @endif
-                            </div>
+                                </div>
+                            @endif
 
-                            {{--User Image--}}
+                            {{--Uploader Name & Image--}}
                             <div class="mt-4">
                                 <span class="fw-bolder text-info lesson__showDetail">By:{{$lesson->getUser->name}}
                                     @if($lesson->getUser->user_image)
@@ -56,28 +56,72 @@
                             </div>
 
                             {{--Lesson Slide Show Image--}}
-                            <ul id="imageGallery" class="text-center">
-                                @foreach($lesson->getLessonImages as $image)
-                                    <li data-src="{{asset('storage/lesson_image/'.$image->name)}}" data-thumb="{{asset('storage/lesson_image/'.$image->name)}}">
-                                        <img style="object-fit: contain;height: 300px" class="w-100" src="{{asset('storage/lesson_image/'.$image->name)}}" alt="">
-                                    </li>
-                                @endforeach
-                            </ul>
-{{--                            <ul id="imageGallery">--}}
-{{--                                <li data-thumb="img/thumb/cS-1.jpg" data-src="img/largeImage.jpg">--}}
-{{--                                    <img src="img/cS-1.jpg" />--}}
-{{--                                </li>--}}
-{{--                                <li data-thumb="img/thumb/cS-2.jpg" data-src="img/largeImage1.jpg">--}}
-{{--                                    <img src="img/cS-2.jpg" />--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
+                            @if($lesson->getLessonImages)
+                                <ul id="imageGallery" class="text-center">
+                                    @foreach($lesson->getLessonImages as $image)
+                                        <li data-src="{{asset('storage/lesson_image/'.$image->name)}}"
+                                            data-thumb="{{asset('storage/lesson_image/'.$image->name)}}">
+                                            <img style="object-fit: contain;height: 300px" class="w-100"
+                                                 src="{{asset('storage/lesson_image/'.$image->name)}}" alt="">
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
                             {{--Lesson Description--}}
                             <p class="mt-3" style="text-align: justify">{{$lesson->description}}</p>
+
+                            @php
+                                $nextLesson = \App\Models\Lesson::where('id','<',$lesson->id)->latest('id')->first();
+                                $previousLesson = \App\Models\Lesson::where('id','>',$lesson->id)->first();
+                            @endphp
+
+                            <div class="nav d-flex justify-content-between p-3">
+                                <a href="{{isset($previousLesson)? route('frontend.lesson.show',$previousLesson->id) : '#'}}"
+                                   class="btn btn-outline-primary page-mover rounded-circle d-flex align-items-center @empty($previousLesson) disabled @endempty">
+                                    <i class="uil-arrow-left"></i>
+                                </a>
+
+                                <a class="btn btn-outline-primary px-3 rounded-pill"
+                                   href="{{route('frontend.lessons')}}">
+                                    Read All
+                                </a>
+
+                                <a href="{{isset($nextLesson)? route('frontend.lesson.show',$nextLesson->id) : '#'}}"
+                                   class="btn btn-outline-primary page-mover rounded-circle d-flex align-items-center @empty($nextLesson) disabled @endempty">
+                                    <i class="uil-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Related Posts</h3>
+                    <div class="card">
+                        <div class="card-body" >
+                            <div class="" style="height: 600px;overflow: scroll">
+                                    @foreach($relatedPosts as $relatedPost)
+                                        @if($relatedPost->header_image)
+                                            <img style="height: 200px" class="w-100" src="{{asset('storage/header_image/'.$relatedPost->header_image)}}" alt="">
+                                        @else
+                                            <img style="height: 200px;" class="w-100" src="{{asset('frontend/assets/img/photo.jpg')}}" alt="">
+                                        @endif
+                                        <h6 class="m-0 mt-2">{{$relatedPost->excerpt_title}}</h6>
+                                        <div class="d-flex justify-content-between">
+                                            <small>{{$relatedPost->getUser->name}}</small>
+                                            <small>{{$relatedPost->getGrade->title}} {{$relatedPost->getSubject->title}}</small>
+                                        </div>
+                                        <hr>
+                                    @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 @push('script')

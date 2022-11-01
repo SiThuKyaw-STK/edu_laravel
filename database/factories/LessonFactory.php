@@ -29,7 +29,7 @@ class LessonFactory extends Factory
             "grade_id" => $ranGrade,
             "subject_id" => $ranSubject,
             "title" => $title,
-            "excerpt_title" => Str::substrReplace($title,"...",25),
+            "excerpt_title" => Str::substrReplace($title,"...",20),
             "slug" => Str::slug($title),
             "description" => $description,
             "excerpt" => Str::substrReplace($description,"...",50),
