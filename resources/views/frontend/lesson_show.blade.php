@@ -1,4 +1,10 @@
 @extends('layouts.main.frontend')
+@push('style')
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+@endpush
 @include('layouts.frontend.navbar')
 @section('content')
     <div class="container-fluid">
@@ -27,14 +33,14 @@
                         <div class="card-body">
                             {{--Header Image--}}
                             @if($lesson->header_image)
-                                <div class="text-center">
+                                <div class="text-center mb-4">
                                     <img class="" src="{{asset('storage/header_image/'.$lesson->header_image)}}"
                                          alt="">
                                 </div>
                             @endif
 
                             {{--Uploader Name & Image--}}
-                            <div class="mt-4">
+                            <div class="">
                                 <span class="fw-bolder text-info lesson__showDetail">By:{{$lesson->getUser->name}}
                                     @if($lesson->getUser->user_image)
                                         <img src="{{asset('storage/profile/'.$lesson->getUser->user_image)}}" alt="">
@@ -101,20 +107,26 @@
                     <h3>Related Posts</h3>
                     <div class="card">
                         <div class="card-body" >
-                            <div class="" style="height: 600px;overflow: scroll">
-                                    @foreach($relatedPosts as $relatedPost)
-                                        @if($relatedPost->header_image)
-                                            <img style="height: 200px" class="w-100" src="{{asset('storage/header_image/'.$relatedPost->header_image)}}" alt="">
-                                        @else
-                                            <img style="height: 200px;" class="w-100" src="{{asset('frontend/assets/img/photo.jpg')}}" alt="">
-                                        @endif
-                                        <h6 class="m-0 mt-2">{{$relatedPost->excerpt_title}}</h6>
-                                        <div class="d-flex justify-content-between">
-                                            <small>{{$relatedPost->getUser->name}}</small>
-                                            <small>{{$relatedPost->getGrade->title}} {{$relatedPost->getSubject->title}}</small>
-                                        </div>
-                                        <hr>
-                                    @endforeach
+                            <div class="swiper related_swiper">
+                                  <div class="swiper-wrapper">
+                                      @foreach($relatedPosts as $relatedPost)
+                                         <div class="swiper-slide">
+                                             @if($relatedPost->header_image)
+                                                 <img style="height: 200px" class="w-100" src="{{asset('storage/header_image/'.$relatedPost->header_image)}}" alt="">
+                                             @else
+                                                 <img style="height: 200px;" class="w-100" src="{{asset('frontend/assets/img/photo.jpg')}}" alt="">
+                                             @endif
+                                             <h6 class="m-0 mt-2">{{$relatedPost->excerpt_title}}</h6>
+                                             <div class="d-flex justify-content-between">
+                                                 <small>{{$relatedPost->getUser->name}}</small>
+                                                 <small>{{$relatedPost->getGrade->title}} {{$relatedPost->getSubject->title}}</small>
+                                             </div>
+                                         </div>
+                                      @endforeach
+                                  </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
                             </div>
                         </div>
                     </div>
@@ -146,4 +158,20 @@
             });
         });
     </script>
+    {{--swiper--}}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        let swiper = new Swiper(".related_swiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                type: "fraction",
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
 @endpush

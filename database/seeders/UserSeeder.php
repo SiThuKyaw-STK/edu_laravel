@@ -16,8 +16,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-
 
         User::factory()->create([
             'name' => 'Si Thu Kyaw',
@@ -46,5 +44,8 @@ class UserSeeder extends Seeder
             'role' => '2',
             "password" => Hash::make('asdffdsa')
         ]);
+
+        User::factory(10)->create();
+
     }
 }
