@@ -19,7 +19,7 @@ class FrontEndController extends Controller
         $grades = Grade::all();
         $lessons = Lesson::when(isset(request()->search), function ($q) {
             $q->orwhere('title', 'Like', '%' . request()->search . '%')->orwhere('description', 'Like', '%' . request()->search . '%');
-        })->latest('id')->paginate(8);
+        })->latest('id')->with(['getGrade','getSubject'])->paginate(8);
         return view('frontend.lessons', compact('grades', 'lessons'));
     }
 
@@ -31,10 +31,15 @@ class FrontEndController extends Controller
             ->where('grade_id', "$lesson->grade_id")
             ->where('subject_id', "$lesson->subject_id")
             ->where('id','!=',"$id")
-
             ->get();
 
 //        return $relatedPosts;
         return view('frontend.lesson_show', compact('lesson', 'grades', 'relatedPosts'));
+    }
+
+    public function lessonsByGrade($id){
+        $lessons = Lesson::where('grade_id',"$id")->latest()->with(['getGrade','getSubject'])->paginate(8);
+        $grades = Grade::all();
+        return view('frontend.lessons',compact('lessons','grades'));
     }
 }

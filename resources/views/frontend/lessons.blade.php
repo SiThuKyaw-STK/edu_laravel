@@ -5,13 +5,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="d-flex justify-content-between py-2">
-                    <select class="form-select w-25" aria-label=".form-select-sm example">
-                        <option selected>Select Grade</option>
-                        @foreach($grades as $grade)
-                            <option value="{{$grade->id}}">{{$grade->title}}</option>
-                        @endforeach
-                    </select>
+                <div class="d-flex justify-content-between py-2 align-items-center">
+                   <div class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                           Select Grade
+                       </a>
+                       <ul class="dropdown-menu">
+                           @foreach($grades as $grade)
+                               <li value="{{$grade->id}}"><a class="dropdown-item" href="{{route('frontend.lessonByGrade',$grade->id)}}">{{$grade->title}}</a></li>
+                           @endforeach
+                       </ul>
+                   </div>
                     <form class="input-group w-25" role="search">
                         <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit"><i class="uil-search-alt"></i></button>
@@ -32,7 +36,13 @@
                             <div class="card-body">
                                 <h6 class="card-title fw-bolder">{{$lesson->excerpt_title}}</h6>
                                 <p class="card-text">{{$lesson->excerpt}}</p>
-                                <a href="{{route('frontend.lesson.show',$lesson->id)}}" class="btn btn-primary float-end">learn more</a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-grid">
+                                        <small class="m-0 fw-bold">{{$lesson->getGrade->title}}</small>
+                                        <small class="m-0 fw-bold">{{$lesson->getSubject->title}}</small>
+                                    </div>
+                                    <a href="{{route('frontend.lesson.show',$lesson->id)}}" class="btn btn-primary">learn more</a>
+                                </div>
                             </div>
                         </div>
                     </div>

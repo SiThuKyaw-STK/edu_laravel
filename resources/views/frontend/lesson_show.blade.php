@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between py-2">
-                        <select class="form-select w-25" aria-label=".form-select-sm example">
+                        <select class="form-select w-25" aria-label=".form-select-sm example" onchange="location = this.value">
                             <option selected>Select Grade</option>
                             @foreach($grades as $grade)
                                 <option value="{{$grade->id}}">{{$grade->title}}</option>
@@ -103,27 +103,49 @@
 
                     </div>
                 </div>
+                {{--Related Posts--}}
                 <div class="col-lg-4">
                     <h3>Related Posts</h3>
                     <div class="card">
-                        <div class="card-body" >
+                        <div class="card-body">
                             <div class="swiper related_swiper">
-                                  <div class="swiper-wrapper">
-                                      @foreach($relatedPosts as $relatedPost)
-                                         <div class="swiper-slide">
-                                             @if($relatedPost->header_image)
-                                                 <img style="height: 200px" class="w-100" src="{{asset('storage/header_image/'.$relatedPost->header_image)}}" alt="">
-                                             @else
-                                                 <img style="height: 200px;" class="w-100" src="{{asset('frontend/assets/img/photo.jpg')}}" alt="">
-                                             @endif
-                                             <h6 class="m-0 mt-2">{{$relatedPost->excerpt_title}}</h6>
-                                             <div class="d-flex justify-content-between">
-                                                 <small>{{$relatedPost->getUser->name}}</small>
-                                                 <small>{{$relatedPost->getGrade->title}} {{$relatedPost->getSubject->title}}</small>
-                                             </div>
-                                         </div>
-                                      @endforeach
-                                  </div>
+                                <div class="swiper-wrapper">
+                                    @foreach($relatedPosts as $relatedPost)
+                                        <a href="{{route('frontend.lesson.show',$relatedPost->id)}}">
+                                            <div class="swiper-slide">
+                                                @if($relatedPost->header_image)
+                                                    <img style="height: 200px" class="w-100"
+                                                         src="{{asset('storage/header_image/'.$relatedPost->header_image)}}"
+                                                         alt="">
+                                                @else
+                                                    <img style="height: 200px;" class="w-100"
+                                                         src="{{asset('frontend/assets/img/photo.jpg')}}" alt="">
+                                                @endif
+                                                <a class="text-decoration-none"
+                                                   href="{{route('frontend.lesson.show',$relatedPost->id)}}"><h6
+                                                        class="m-0 mt-2">{{$relatedPost->excerpt_title}}</h6></a>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex align-items-center">
+                                                        @if($relatedPost->getUser->user_image)
+                                                            <img style="width: 20px;border-radius: 50%" class="me-1"
+                                                                 src="{{asset('storage/profile/'.$relatedPost->getUser->user_image)}}"
+                                                                 alt="">
+                                                        @else
+                                                            <img style="width: 20px;border-radius: 50%" class="me-1"
+                                                                 src="{{asset('dashboard/assets/img/user.png')}}"
+                                                                 alt="">
+                                                        @endif
+                                                        <p class="m-0">{{$relatedPost->getUser->name}}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="m-0">{{$relatedPost->getGrade->title}}</p>
+                                                        <p class="m-0"> {{$relatedPost->getSubject->title}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
                                 <div class="swiper-pagination"></div>

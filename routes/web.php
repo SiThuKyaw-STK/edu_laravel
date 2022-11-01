@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\UserProfileController;
@@ -31,9 +32,10 @@ Route::get('/image', function() {
     });
     return $img->response('jpg');
 });
-Route::get('/',[\App\Http\Controllers\FrontEndController::class,'welcome'])->name('frontend.welcome');
-Route::get('/lessons',[\App\Http\Controllers\FrontEndController::class,'lessons'])->name('frontend.lessons');
-Route::get('/lesson-show/{id}',[\App\Http\Controllers\FrontEndController::class,'lessonShow'])->name('frontend.lesson.show');
+Route::get('/',[FrontEndController::class,'welcome'])->name('frontend.welcome');
+Route::get('/lessons',[FrontEndController::class,'lessons'])->name('frontend.lessons');
+Route::get('/lesson-show/{id}',[FrontEndController::class,'lessonShow'])->name('frontend.lesson.show');
+Route::get('/lesson-by-grade/{id}',[FrontEndController::class,'lessonsByGrade'])->name('frontend.lessonByGrade');
 
 Auth::routes();
 
