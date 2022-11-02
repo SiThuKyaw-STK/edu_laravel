@@ -91,7 +91,7 @@ margin-left: -16.6%;
     background: #2F4858;
     transition: all .3s;
 }
-span + span {
+.hamburger span + span {
     margin-top: 4px;
 }
 .hamburger.active span{

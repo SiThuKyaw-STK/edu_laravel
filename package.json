@@ -18,6 +18,7 @@
         "@iconscout/unicons": "^4.0.1",
         "datatables.net": "^1.12.1",
         "datatables.net-dt": "^1.12.1",
-        "lightslider": "^1.1.6"
+        "lightslider": "^1.1.6",
+        "sweetalert2": "^11.6.5"
     }
 }

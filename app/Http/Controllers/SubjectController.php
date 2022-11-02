@@ -49,7 +49,7 @@ class SubjectController extends Controller
         $subject->slug = Str::slug($request->subject_title);
         $subject->user_id = Auth::id();
         $subject->save();
-        return redirect()->route('subject.create');
+        return redirect()->route('subject.create')->with('status',$request->subject_title." is added");
     }
 
     /**
@@ -87,7 +87,7 @@ class SubjectController extends Controller
         $subject->slug = Str::slug($request->subject_title);
         $subject->update();
 
-        return redirect()->route('subject.create');
+        return redirect()->route('subject.create')->with('status',$request->subject_title." is edited");
     }
 
     /**
@@ -102,6 +102,6 @@ class SubjectController extends Controller
 
         $subject->delete();
 
-        return redirect()->route('subject.create');
+        return redirect()->route('subject.create')->with('status',$subject->title." is deleted");
     }
 }

@@ -19,8 +19,8 @@
     <div class="row g-0">
 
         <!--side bar start-->
-        @include('layouts.dashboard.sidebar')
-        <!--side bar end-->
+    @include('layouts.dashboard.sidebar')
+    <!--side bar end-->
 
         <!--main start-->
         <main class="col-10 flex-fill min-vh-100">
@@ -38,6 +38,14 @@
 
 <script src="{{asset('dashboard/assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('dashboard/assets/js/app.js')}}"></script>
+{{--<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
 @stack('script')
+    <script>
+        @if(session('status'))
+            document.addEventListener('DOMContentLoaded',function () {
+            showToast("{{session('status')}}")
+            })
+        @endif
+    </script>
 </body>
 </html>
