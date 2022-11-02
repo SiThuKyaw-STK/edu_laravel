@@ -9,24 +9,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="d-flex justify-content-between py-2">
-                        <select class="form-select w-25" aria-label=".form-select-sm example" onchange="location = this.value">
-                            <option selected>Select Grade</option>
-                            @foreach($grades as $grade)
-                                <option value="{{$grade->id}}">{{$grade->title}}</option>
-                            @endforeach
-                        </select>
-                        <form class="input-group w-25" role="search">
-                            <input class="form-control" type="search" name="search" placeholder="Search"
-                                   aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit"><i class="uil-search-alt"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.frontend.lessons_control_navbar')
             <div class="row mt-5">
                 <div class="col-lg-8">
                     <div class="card">

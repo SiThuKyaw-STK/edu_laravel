@@ -36,6 +36,7 @@ Route::get('/',[FrontEndController::class,'welcome'])->name('frontend.welcome');
 Route::get('/lessons',[FrontEndController::class,'lessons'])->name('frontend.lessons');
 Route::get('/lesson-show/{id}',[FrontEndController::class,'lessonShow'])->name('frontend.lesson.show');
 Route::get('/lesson-by-grade/{id}',[FrontEndController::class,'lessonsByGrade'])->name('frontend.lessonByGrade');
+Route::get('/lesson-by-uploader/{id}',[FrontEndController::class,'lessonsByUploader'])->name('frontend.lessonByUploader');
 
 Auth::routes();
 
