@@ -18,7 +18,8 @@
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label">Select Grade</label>
-                                <select type="text" name="grade" id="grade" class="form-select @error('grade') is-invalid @enderror">
+                                <select type="text" name="grade" id="grade"
+                                        class="form-select @error('grade') is-invalid @enderror">
                                     @forelse($grades as $grade)
                                         <option
                                             value="{{$grade->id}}"
@@ -71,26 +72,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($subjects as $subject)
-                                <tr>
-                                    <td>{{$subject->grade->title}}</td>
-                                    <td>{{$subject->title}}</td>
-                                    <td>{{$subject->user->name}}</td>
-                                    <td>
-                                        <a href="{{ route('subject.edit',$subject->id) }}" class="btn btn-sm btn-outline-info">
-                                            <i class="uil-pen"></i>
-                                        </a>
-                                        <form action="{{ route('subject.destroy',$subject->id) }}" class="d-inline-block" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-sm btn-outline-danger">
-                                                <i class="uil uil-trash-alt"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                    <td>{{$subject->created_at->diffForHumans()}}</td>
-                                </tr>
-                            @endforeach
+                        @foreach($subjects as $subject)
+                            <tr>
+                                <td>{{$subject->grade->title}}</td>
+                                <td>{{$subject->title}}</td>
+                                <td>{{$subject->user->name}}</td>
+                                <td>
+                                    <a href="{{ route('subject.edit',$subject->id) }}"
+                                       class="btn btn-sm btn-outline-info">
+                                        <i class="uil-pen"></i>
+                                    </a>
+                                    <form action="{{ route('subject.destroy',$subject->id) }}" class="d-inline-block"
+                                          method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit"
+                                                class="btn btn-sm btn-outline-danger show-alert-delete-box" data-toggle="tooltip" title='Delete'>
+                                            <i class="uil uil-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>{{$subject->created_at->diffForHumans()}}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -100,3 +104,25 @@
 
 
 @endsection
+
+@push('script')
+    <script>
+        $('.show-alert-delete-box').click(function(event){
+            let form =  $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        });
+    </script>
+@endpush

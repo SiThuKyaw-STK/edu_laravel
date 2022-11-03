@@ -38,7 +38,7 @@
 
 <script src="{{asset('dashboard/assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('dashboard/assets/js/app.js')}}"></script>
-{{--<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @stack('script')
     <script>
         @if(session('status'))

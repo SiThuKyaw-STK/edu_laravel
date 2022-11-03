@@ -1,7 +1,5 @@
 import * as bootstrap from "bootstrap";
 import $ from 'jquery';
-import Swal from "sweetalert2";
-window.Swal = Swal;
 window.jQuery = window.$ = $;
 
 import DataTable from 'datatables.net';
@@ -24,23 +22,10 @@ $(document).ready( function () {
 } );
 
 window.showToast = function (message) {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top',
-        showConfirmButton: false,
-        timer: 3000,
+    Swal.fire({
+        title : message,
+        timer : 5000,
         timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
     })
+}
 
-    Toast.fire({
-        icon : 'success',
-        title: message
-    })
-}
-window.test = function (x) {
-    alert(x)
-}
