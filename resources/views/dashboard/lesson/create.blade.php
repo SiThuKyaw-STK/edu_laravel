@@ -80,7 +80,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-secondary">Add Post</button>
+                        <button type="submit" class="btn btn-secondary float-end">Add Post</button>
                     </form>
                 </div>
             </div>

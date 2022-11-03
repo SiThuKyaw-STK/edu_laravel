@@ -18,7 +18,7 @@ class UserController extends Controller
             $currentUser->role = '1';
         }
         $currentUser->update();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status',$currentUser->name." is now Editor.");
     }
 
     public function makeUser(Request $request){
@@ -27,7 +27,7 @@ class UserController extends Controller
             $currentUser->role = '2';
         }
         $currentUser->update();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status',$currentUser->name." is now User.");
     }
 
     public function ban(Request $request){
@@ -36,7 +36,7 @@ class UserController extends Controller
             $currentUser->isBaned = '0';
         }
         $currentUser->update();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status',$currentUser->name." is banned.");
     }
 
     public function restore(Request $request){
@@ -45,6 +45,6 @@ class UserController extends Controller
             $currentUser->isBaned = '1';
         }
         $currentUser->update();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status',$currentUser->name." is restored.");
     }
 }

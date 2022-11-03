@@ -26,7 +26,7 @@
                         <span class="fw-bolder"><i class="uil-user"></i>{{$lesson->getUser->name}}</span>
                         <span class="fw-bolder"><i class="uil-calendar-alt"></i>{{$lesson->created_at->diffForHumans()}}</span>
                     </div>
-                    <p style="text-align: justify">{{$lesson->description}}</p>
+                    <p style="text-align: justify;white-space: pre-wrap">{{$lesson->description}}</p>
 
                     @foreach($lesson->getLessonImages as $photo)
                         <img class="lesson_image" src="{{asset('storage/lesson_image/'.$photo->name)}}" alt="">

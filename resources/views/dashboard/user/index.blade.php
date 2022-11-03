@@ -42,11 +42,11 @@
                                 </td>
                                 <td>
                                     @if($user->isBaned == 0)
-                                        <span class="badge text-bg-danger fw-light">Baned</span>
+                                        <span class="badge text-bg-danger fw-light">Banned</span>
                                         <form class="d-inline-block" action="{{route('user.restore')}}" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{$user->id}}">
-                                            <button class="btn btn-sm btn-success">Restore</button>
+                                            <button class="btn btn-sm btn-success show-alert-restore-box">Restore</button>
                                         </form>
                                     @elseif($user->role == 0)
                                         <button class="btn btn-secondary" disabled>This is an admin</button>
@@ -54,7 +54,7 @@
                                         <form class="d-inline-block" action="{{route('user.ban')}}" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{$user->id}}">
-                                            <button class="btn btn-sm btn-danger">Ban This User!!!</button>
+                                            <button class="btn btn-sm btn-danger show-alert-ban-box">Ban This User!!!</button>
                                         </form>
                                     @endif
                                 </td>
@@ -63,14 +63,14 @@
                                     <form class="d-inline-block" action="{{route('user.makeEditor')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="id" value="{{$user->id}}">
-                                        <button class="btn btn-sm btn-info">Make Editor</button>
+                                        <button class="btn btn-sm btn-info show-alert-makeEditor-box">Make Editor</button>
                                     </form>
 
                                     @elseif($user->role == 1)
                                         <form action="{{route('user.makeUser')}}" method="post">
                                             @csrf
                                             <input type="hidden" name="id" value="{{$user->id}}">
-                                            <button class="btn btn-sm btn-warning">Make User</button>
+                                            <button class="btn btn-sm btn-warning show-alert-makeUser-box">Make User</button>
                                         </form>
                                     @endif
                                 </td>
@@ -84,3 +84,75 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+        $('.show-alert-ban-box').click(function(event){
+            let form =  $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure to ban this user?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        });
+        $('.show-alert-restore-box').click(function(event){
+            let form =  $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure to restore this user?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        });
+        $('.show-alert-makeEditor-box').click(function(event){
+            let form =  $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure to upgrade Editor role?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        });
+        $('.show-alert-makeUser-box').click(function(event){
+            let form =  $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure to role down this user?',
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        });
+    </script>
+@endpush

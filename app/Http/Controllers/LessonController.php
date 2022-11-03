@@ -98,7 +98,7 @@ class LessonController extends Controller
 
 
 
-        return redirect()->route('lesson.create');
+        return redirect()->route('lesson.index')->with('status',$request->lesson_title." is added.");
     }
 
     /**
@@ -182,7 +182,7 @@ class LessonController extends Controller
         }
 
 
-        return redirect()->back();
+        return redirect()->back()->with('status',$request->lesson_title." is edited.");
     }
 
     /**
@@ -206,6 +206,6 @@ class LessonController extends Controller
         }
 
         $lesson->delete();
-        return redirect()->route('lesson.index');
+        return redirect()->route('lesson.index')->with('status',$lesson->title." is deleted.");
     }
 }
