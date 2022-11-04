@@ -20,7 +20,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * allows your team to easily build robust real-time web applications.
  */
 
-
+// sweetalert2
 import Swal from "sweetalert2";
 window.Swal = Swal;
 

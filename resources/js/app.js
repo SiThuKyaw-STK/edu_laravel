@@ -2,9 +2,14 @@ import * as bootstrap from "bootstrap";
 import $ from 'jquery';
 window.jQuery = window.$ = $;
 
+//data table
 import DataTable from 'datatables.net';
 window.DataTable = DataTable;
 DataTable($);
+
+
+
+ScrollReveal().reveal('.frontend__navbar')
 
 $(document).ready( function () {
     $('#d-table').DataTable({
@@ -21,6 +26,7 @@ $(document).ready( function () {
     });
 } );
 
+//sweetalert2
 window.showToast = function (message) {
     Swal.fire({
         title : message,

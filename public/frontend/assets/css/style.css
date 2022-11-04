@@ -61,3 +61,9 @@
     border-color: var(--bs-gray) !important;
     color: var(--bs-gray);
 }
+/*Navbar*/
+.frontend__navbar{
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 100000 !important;
+}

@@ -124,7 +124,7 @@
             let form =  $(this).closest("form");
             event.preventDefault();
             Swal.fire({
-                title: 'Are you sure to upgrade Editor role?',
+                title: 'Are you sure to upgrade Editor role for this user?',
                 text: "",
                 icon: 'warning',
                 showCancelButton: true,
@@ -141,7 +141,7 @@
             let form =  $(this).closest("form");
             event.preventDefault();
             Swal.fire({
-                title: 'Are you sure to role down this user?',
+                title: 'Are you sure to downgrade User role for this user?',
                 text: "",
                 icon: 'warning',
                 showCancelButton: true,

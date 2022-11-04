@@ -4,10 +4,13 @@
 <div class="container-fluid ">
     <div class="container">
         @include('layouts.frontend.lessons_control_navbar')
+        <x-frontend-bread-crumb>
+            <li class="breadcrumb-item active" aria-current="page">Lessons</li>
+        </x-frontend-bread-crumb>
         <div class="row">
-            @foreach($lessons as $lesson)
+            @forelse($lessons as $lesson)
                 <div class="col-lg-3 mt-3">
-                    <div class="">
+                    <div class="lesson__card">
                         <div class="card">
                             @if($lesson->header_image)
                                 <img style="height: 200px" src="{{asset('storage/header_image/'.$lesson->header_image)}}" class="card-img-top" alt="...">
@@ -29,7 +32,14 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="text-center mt-5">
+
+                        <h1 class="text-danger">Sorry There Is No Data!</h1>
+                        <h2 class="text-primary">We Will Be Uploading Soon.</h2>
+
+                </div>
+            @endforelse
         </div>
         <div class="my-5" id="pagination">
             {{$lessons->onEachSide(1)->links()}}
@@ -38,3 +48,14 @@
 </div>
 
 @endsection
+@push('script')
+{{--Scrollreveal--}}
+<script>
+    const sr = ScrollReveal();
+
+    sr.reveal('.lesson__card',{
+        duration : 1000,
+        interval : 300
+    });
+</script>
+@endpush

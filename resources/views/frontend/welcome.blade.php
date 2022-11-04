@@ -23,12 +23,12 @@
         <div class="container">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-lg-6">
-                    <div class="">
+                    <div class="about__img">
                         <img src="{{asset('frontend/assets/img/about.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="">
+                    <div class="about__content">
                         <h4 class="text-primary text-uppercase fw-bold">About us</h4>
                         <h2 class="text-capitalize text-white fw-bold">experts to help your cross every hurdle</h2>
                         <p class="text-white text-white-50">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -104,7 +104,7 @@
                     <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
                         <h1>{{$grade->title}}</h1>
                         <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
-                        <a href="#" class="btn btn-dark mt-4">Learn {{$grade->title}}</a>
+                        <a href="{{route('frontend.lessonByGrade',$grade->id)}}" class="btn btn-dark mt-4">Learn {{$grade->title}}</a>
                     </div>
                 </div>
                 @endforeach
@@ -115,7 +115,6 @@
 @endsection
 
 @push('script')
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
     <script>
         let swiper = new Swiper(".testimonials__swiper", {
@@ -124,5 +123,68 @@
                 prevEl: ".swiper-button-prev",
             },
         });
+    </script>
+
+    {{--ScrollRevela--}}
+    <script>
+        const sr = ScrollReveal({});
+        //home
+        sr.reveal('.home__content h1',{
+            duration : 2000,
+            easing   : 'ease-in-out',
+            distance : "30px"
+        });
+        sr.reveal('.home__content p',{
+            duration : 2000,
+            delay : 1000,
+            easing   : 'ease-in-out',
+            distance : "30px"
+        });
+        sr.reveal('.home__content a',{
+            duration : 2000,
+            delay : 1000,
+            easing   : 'ease-out',
+            distance : "60px",
+        });
+        //about
+        sr.reveal('.about__img',{
+            duration : 2000,
+            delay : 500
+        });
+        sr.reveal('.about__content h4',{
+            duration : 2000,
+            distance : '100px',
+            origin : 'right'
+        });
+        sr.reveal('.about__content h2',{
+            duration : 2000,
+            delay : 500,
+            distance : '1000px',
+            origin : 'right'
+        });
+        sr.reveal('.about__content p',{
+            duration : 2000,
+            delay : 1000,
+            distance : '1000px',
+            origin : 'right'
+        });
+        sr.reveal('.about__content a',{
+            duration : 2000,
+            delay : 1500,
+            distance : '1000px',
+            origin : 'right'
+        });
+        //lessons
+        sr.reveal('.lesson__card',{
+            duration : 2000,
+            interval : 200
+        });
+        sr.reveal('.lesson__card h1',{
+            duration: 1000,
+            delay : 200,
+            distance : '50px',
+            origin : 'bottom'
+        });
+
     </script>
 @endpush

@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             GradeSeeder::class,
-//            SubjectSeeder::class,
-//            LessonSeeder::class,
+            SubjectSeeder::class,
+            LessonSeeder::class,
         ]);
 
         $header_image = Storage::allFiles('public/header_image');

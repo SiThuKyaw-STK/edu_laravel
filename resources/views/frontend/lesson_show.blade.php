@@ -10,7 +10,11 @@
     <div class="container-fluid">
         <div class="container">
             @include('layouts.frontend.lessons_control_navbar')
-            <div class="row mt-5">
+            <x-frontend-bread-crumb>
+                <li class="breadcrumb-item"><a href="{{route('frontend.lessons')}}">Lessons</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$lesson->title}}</li>
+            </x-frontend-bread-crumb>
+            <div class="row mt-3">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
@@ -146,19 +150,20 @@
             integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        $(document).ready(function () {
-            $('#imageGallery').lightSlider({
+        jQuery(document).ready(function () {
+            jQuery('#imageGallery').lightSlider({
                 gallery: true,
                 item: 1,
                 loop: true,
                 thumbItem: 9,
                 slideMargin: 0,
                 enableDrag: false,
+                autoWidth: true,
                 currentPagerPosition: 'left',
                 onSliderLoad: function (el) {
-                    el.lightGallery({
-                        selector: '#imageGallery .lslide'
-                    });
+                    // el.lightGallery({
+                    //     selector: '#imageGallery .lslide'
+                    // });
                 }
             });
         });
