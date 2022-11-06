@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     use HasFactory;
+    protected $fillable = ["grade_id","title","slug","user_id"];
 
     public function grade(){
        return $this->belongsTo(Grade::class,'grade_id');
