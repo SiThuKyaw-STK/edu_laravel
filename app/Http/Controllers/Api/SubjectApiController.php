@@ -70,8 +70,8 @@ class SubjectApiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'grade' => 'required',
-            'subject_title' => 'required|min:5|max:100',
+            'grade_id' => 'required',
+            'title' => 'required|min:8',
             'user_id' => 'required'
         ]);
 
@@ -79,12 +79,21 @@ class SubjectApiController extends Controller
         if (is_null($subject)){
             return response()->json(["message"=>"Subject not found!"],404);
         }
-        $subject->grade_id = $request->grade;
-        $subject->title = $request->subject_title;
-        $subject->user_id = $request->user_id;
+
+        if ($request->has('grade_id')){
+            $subject->grade_id = $request->grade_id;
+        }
+        if ($request->has('title')){
+            $subject->title = $request->title;
+        }
+        if ($request->has('user_id')){
+            $subject->user_id = $request->user_id;
+        }
+        $subject->slug = Str::slug($request->title);
         $subject->update();
 
         return response()->json($subject);
+
     }
 
     /**
