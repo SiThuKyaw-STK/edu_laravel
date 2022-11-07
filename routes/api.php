@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\LessonApiController;
+use App\Http\Controllers\Api\PhotoApiController;
 use App\Http\Controllers\Api\SubjectApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
@@ -22,4 +24,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('users',UserApiController::class);
 Route::apiResource('subjects',SubjectApiController::class);
+Route::apiResource('lessons',LessonApiController::class);
+Route::apiResource('photos',PhotoApiController::class);
 
