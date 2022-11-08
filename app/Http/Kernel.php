@@ -2,10 +2,12 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ControlApi;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsAdminOrEditor;
 use App\Http\Middleware\IsBaned;
 use App\Http\Middleware\IsEditor;
+use App\Http\Middleware\ResponseToJson;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -43,7 +45,8 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            ResponseToJson::class,
+             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],

@@ -7,6 +7,7 @@ use App\Models\Lesson;
 use App\Models\Photo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -38,7 +39,6 @@ class LessonApiController extends Controller
             'lesson_title' => 'required|min:3',
             'lesson_description' => 'required|min:10',
             'header_image' => 'nullable|mimes:jpeg,png|file|max:10000',
-            'user_id' => 'required|exists:users,id',
             'lesson_images.*' => 'nullable|mimes:jpeg,png|file|max:10000',
         ]);
 
@@ -50,7 +50,7 @@ class LessonApiController extends Controller
             "slug" => Str::slug($request->lesson_title),
             "description" => $request->lesson_description,
             "excerpt" => Str::substrReplace($request->lesson_description,"...",50),
-            "user_id" => $request->user_id
+            "user_id" => Auth::id(),
         ]);
 
        if ($request->lesson_images){
@@ -95,7 +95,6 @@ class LessonApiController extends Controller
             'lesson_title' => 'required|min:3',
             'lesson_description' => 'required|min:10',
             'header_image' => 'nullable|mimes:jpeg,png|file|max:10000',
-            'user_id' => 'required|exists:users,id',
             'lesson_images.*' => 'nullable|mimes:jpeg,png|file|max:10000',
         ]);
 
@@ -111,7 +110,7 @@ class LessonApiController extends Controller
             $lesson->slug = Str::slug($request->lesson_title);
             $lesson->description = $request->lesson_description;
             $lesson->excerpt = Str::substrReplace($request->lesson_description,"...",50);
-            $lesson->user_id = $request->user_id;
+            $lesson->user_id = Auth::id();
             $lesson->update();
 
             return response()->json($lesson);

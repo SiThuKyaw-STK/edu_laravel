@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\LessonApiController;
 use App\Http\Controllers\Api\PhotoApiController;
 use App\Http\Controllers\Api\SubjectApiController;
@@ -22,8 +23,20 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::apiResource('users',UserApiController::class);
-Route::apiResource('subjects',SubjectApiController::class);
-Route::apiResource('lessons',LessonApiController::class);
-Route::apiResource('photos',PhotoApiController::class);
+
+Route::post('/register',[ApiAuthController::class,'register'])->name('api.register');
+Route::post('/login',[ApiAuthController::class,'login'])->name('api.login');
+
+
+Route::middleware(['auth:sanctum'])->group(function (){
+
+    Route::post('/logout',[ApiAuthController::class,'logout'])->name('api.logout');
+    Route::post('/logoutAll',[ApiAuthController::class,'logoutAll'])->name('api.logoutAll');
+    Route::get('/tokens',[ApiAuthController::class,'tokens'])->name('api.tokens');
+
+    Route::apiResource('users',UserApiController::class);
+    Route::apiResource('subjects',SubjectApiController::class);
+    Route::apiResource('lessons',LessonApiController::class);
+    Route::apiResource('photos',PhotoApiController::class);
+});
 
