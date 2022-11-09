@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\LessonResource;
 use App\Models\Lesson;
 use App\Models\Photo;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +23,8 @@ class LessonApiController extends Controller
     {
         $lessons = Lesson::latest('id')->with('getLessonImages')->paginate(10);
 
-        return response()->json($lessons);
+//        return response($lessons);
+       return LessonResource::collection($lessons);
     }
 
     /**
@@ -39,7 +41,7 @@ class LessonApiController extends Controller
             'lesson_title' => 'required|min:3',
             'lesson_description' => 'required|min:10',
             'header_image' => 'nullable|mimes:jpeg,png|file|max:10000',
-            'lesson_images.*' => 'nullable|mimes:jpeg,png|file|max:10000',
+            'lesson_images.*' => 'mimes:jpeg,png|file|max:10000',
         ]);
 
         $lesson = Lesson::create([
@@ -77,7 +79,7 @@ class LessonApiController extends Controller
         if (is_null($lesson)){
             return response()->json(["message"=>"Lesson not found!"],404);
         }
-        return response()->json($lesson);
+        return new LessonResource($lesson);
     }
 
     /**
