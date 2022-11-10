@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="d-flex justify-content-between py-2 align-items-center">
             <div class="d-flex align-items-center">
-                <div class="nav-item dropdown me-2">
+                <div class="nav-item dropdown me-2 search-by-grade">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Search By Grade
@@ -16,7 +16,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="nav-item dropdown">
+                <div class="nav-item dropdown search-by-uploader">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Search By Uploader
@@ -38,10 +38,13 @@
                     </ul>
                 </div>
             </div>
-            <form class="input-group w-25" role="search">
-                <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit"><i class="uil-search-alt"></i></button>
-            </form>
+           <div class="d-flex align-items-center">
+               <form class="input-group" role="search">
+                   <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
+                   <button class="btn btn-outline-primary" type="submit"><i class="uil-search-alt"></i></button>
+               </form>
+               <i class="uil uil-moon change-theme ms-3" id="theme-button"></i>
+           </div>
         </div>
     </div>
 </div>

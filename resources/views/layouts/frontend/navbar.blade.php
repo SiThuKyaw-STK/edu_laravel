@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-black frontend__navbar">
+<nav id="navbar" class="navbar navbar-expand-lg bg-black frontend__navbar">
     <div class="container-fluid">
         <a class="navbar-brand text-primary" href="{{route('frontend.welcome')}}"><h1 class="m-0">Education</h1></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

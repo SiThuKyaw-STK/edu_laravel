@@ -16,7 +16,7 @@
             <div class="row mt-3">
                 <div class="col-lg-8">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body show__lessonDetail">
                             {{--Header Image--}}
                             @if($lesson->header_image)
                                 <div class="text-center mb-4">
@@ -37,7 +37,9 @@
                             </div>
 
                             {{--Title--}}
-                            <h3 class="fw-bolder">{{$lesson->title}}</h3>
+                            <div class="">
+                                <h3 class="fw-bolder">{{$lesson->title}}</h3>
+                            </div>
 
                             {{--Lesson Detail--}}
                             <div class="text-secondary">
@@ -90,7 +92,7 @@
                     </div>
                 </div>
                 {{--Related Posts--}}
-                <div class="col-lg-4">
+                <div class="col-lg-4 lesson__relatedPosts">
                     <h3>Related Posts</h3>
                     <div class="card">
                         <div class="card-body">

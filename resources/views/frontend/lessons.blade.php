@@ -17,15 +17,15 @@
                                 <img style="height: 200px" src="{{asset('frontend/assets/img/photo.jpg')}}" alt="">
                             @endif
                             <div class="card-body">
-                                <small>written: <span class="text-info fw-bolder">{{$lesson->getUser->name}}</span></small>
+                                <small class="card-owner">written: <span class="text-info fw-bolder">{{$lesson->getUser->name}}</span></small>
                                 <h6 class="card-title fw-bolder mt-3">{{$lesson->excerpt_title}}</h6>
                                 <p class="card-text">{{$lesson->excerpt}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-grid">
-                                        <small class="m-0 fw-bold">{{$lesson->getGrade->title}}</small>
-                                        <small class="m-0 fw-bold">{{$lesson->getSubject->title}}</small>
+                                        <small class="m-0 fw-bold text-info">{{$lesson->getGrade->title}}</small>
+                                        <small class="m-0 fw-bold text-info">{{$lesson->getSubject->title}}</small>
                                     </div>
-                                    <a href="{{route('frontend.lesson.show',$lesson->id)}}" class="btn btn-primary">learn more</a>
+                                    <a href="{{route('frontend.lesson.show',$lesson->id)}}" class="btn btn-outline-primary">learn more</a>
                                 </div>
                             </div>
                         </div>

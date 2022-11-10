@@ -75,3 +75,69 @@ section{
     border-bottom: 1px solid #00C896;
 }
 
+/* Change background header */
+.scroll-header {
+    box-shadow: 0 4px 4px hsl(0deg 0% 4% / 30%);
+}
+
+/*=============== THEME ===============*/
+.change-theme {
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+    /*color: rgba(255, 255, 255, 0.5);*/
+}
+.dark-theme .change-theme{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-theme{
+    background: #1d2a35;
+}
+
+.dark-theme .search-by-grade a{
+    color: white;
+}
+.dark-theme .search-by-uploader a{
+    color: white;
+}
+.dark-theme .search-by-grade ul{
+    background: #15202b;
+}
+.dark-theme .search-by-uploader ul{
+    background: #15202b;
+}
+.dark-theme .search-by-grade .dropdown-item:hover, .dropdown-item:focus {
+    background-color: #454545;
+}
+.dark-theme .search-by-uploader .dropdown-item:hover, .dropdown-item:focus {
+    background-color: #454545;
+}
+
+.dark-theme .card-body{
+    background: #15202b;
+}
+.dark-theme .card-owner{
+    color: white;
+}
+.dark-theme .card-title{
+    color: white;
+}
+.dark-theme .card-text{
+    color: rgba(255, 255, 255, 0.5);
+}
+.dark-theme .page-link{
+    background: #15202b;
+}
+.dark-theme .show__lessonDetail h3{
+    color: white;
+}
+.dark-theme .show__lessonDetail p{
+    color: rgba(255, 255, 255, 0.5);
+}
+.dark-theme .lesson__relatedPosts h3{
+    color: rgba(255, 255, 255, 0.5);
+}
+.dark-theme .lesson__relatedPosts p{
+    color: rgba(255, 255, 255, 0.5);
+}
