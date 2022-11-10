@@ -1,5 +1,4 @@
 @extends('layouts.main.frontend')
-@include('layouts.frontend.navbar')
 @section('content')
 <div class="container-fluid ">
     <div class="container">
@@ -46,7 +45,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 @push('script')
 {{--Scrollreveal--}}
@@ -55,7 +53,7 @@
 
     sr.reveal('.lesson__card',{
         duration : 1000,
-        interval : 300
+        interval : 200
     });
 </script>
 @endpush

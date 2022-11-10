@@ -22,7 +22,7 @@ class LessonResource extends JsonResource
             "description" => $this->description,
             "date" => $this->created_at->format("d M Y"),
             "time" => $this->created_at->format("h:i A"),
-            "uploader" => new Userresource($this->getUser),
+            "uploader" => new UserResource($this->getUser),
             "photos" => PhotoResource::collection($this->getLessonImages),
         ];
     }

@@ -6,9 +6,10 @@
     />
 @endpush
 @section('content')
-    <section class="container-fluid p-0 home"
+    @include('layouts.frontend.navbar')
+
+    <section id="home" class="container-fluid p-0 home"
              style="background-image: url('{{asset('frontend/assets/img/home.png')}}')">
-        @extends('layouts.frontend.navbar')
         <div class="container d-flex align-items-center" style="min-height: 90vh">
             <div class="home__content text-center">
                 <h1 class="text-primary fw-bolder">Education For Everyone</h1>
@@ -19,7 +20,7 @@
             </div>
         </div>
     </section>
-    <section class="about bg-black">
+    <section id="about" class="about bg-black">
         <div class="container">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-lg-6">
@@ -42,7 +43,7 @@
             </div>
         </div>
     </section>
-    <section class="testimonials bg-secondary">
+    <section id="testimonials" class="testimonials bg-secondary">
         <div class="container py-5">
             <div class="col-lg-8 m-auto">
                 <h4 class="text-primary text-uppercase fw-bold">testimonials</h4>
@@ -95,7 +96,7 @@
             </div>
         </div>
     </section>
-    <section class="lessons bg-black">
+    <section id="lessons" class="lessons bg-black">
         <div class="container">
             <div class="row">
                 <h4 class="text-primary text-uppercase fw-bold mt-5">lessons</h4>
@@ -111,7 +112,6 @@
             </div>
         </div>
     </section>
-
 @endsection
 
 @push('script')
@@ -187,4 +187,5 @@
         });
 
     </script>
+
 @endpush

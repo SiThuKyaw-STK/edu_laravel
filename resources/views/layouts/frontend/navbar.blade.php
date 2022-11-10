@@ -5,31 +5,32 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse nav__menu" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                 <li class="nav-item mx-2">
                     <h5 class="m-0"><a class="nav-link text-white text-uppercase" aria-current="page"
-                                       href="{{route('frontend.welcome')}}">Home</a></h5>
+                                       href="#home">Home</a></h5>
                 </li>
                 <li class="nav-item mx-2">
-                    <h5 class="m-0"><a class="nav-link text-white text-uppercase" aria-current="page" href="#">About</a>
-                    </h5>
-                </li>
-                <li class="nav-item mx-2">
-                    <h5 class="m-0"><a class="nav-link text-white text-uppercase" aria-current="page" href="#">Testimonials</a>
+                    <h5 class="m-0"><a class="nav-link text-white text-uppercase" aria-current="page" href="#about">About</a>
                     </h5>
                 </li>
                 <li class="nav-item mx-2">
                     <h5 class="m-0"><a class="nav-link text-white text-uppercase" aria-current="page"
-                                       href="#">Lessons</a></h5>
+                                       href="#testimonials">Testimonials</a>
+                    </h5>
+                </li>
+                <li class="nav-item mx-2">
+                    <h5 class="m-0"><a class="nav-link text-white text-uppercase" aria-current="page"
+                                       href="#lessons">Lessons</a></h5>
                 </li>
             </ul>
             @auth
-                <a href="{{ route('login') }}" class="btn btn-primary text-black text-uppercase fw-bolder css-prop-demo">Dashboard</a>
+                <a href="{{ route('login') }}"
+                   class="btn btn-primary text-black text-uppercase fw-bolder css-prop-demo">Dashboard</a>
             @else
                 <a href="{{ route('login') }}" class="btn btn-primary text-black text-uppercase fw-bolder">Login</a>
             @endauth
         </div>
     </div>
 </nav>
-

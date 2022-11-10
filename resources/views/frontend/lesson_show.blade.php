@@ -5,7 +5,6 @@
         href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
 @endpush
-@include('layouts.frontend.navbar')
 @section('content')
     <div class="container-fluid">
         <div class="container">
