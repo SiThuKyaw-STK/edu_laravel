@@ -19,8 +19,8 @@
                         <div class="card-body show__lessonDetail">
                             {{--Header Image--}}
                             @if($lesson->header_image)
-                                <div class="text-center mb-4">
-                                    <img class="" src="{{asset('storage/header_image/'.$lesson->header_image)}}"
+                                <div class="text-center mb-4 overflow-scroll">
+                                    <img src="{{asset('storage/header_image/'.$lesson->header_image)}}"
                                          alt="">
                                 </div>
                             @endif

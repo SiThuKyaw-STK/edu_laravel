@@ -3,9 +3,14 @@
 <div class="container-fluid ">
     <div class="container">
         @include('layouts.frontend.lessons_control_navbar')
-        <x-frontend-bread-crumb>
-            <li class="breadcrumb-item active" aria-current="page">Lessons</li>
-        </x-frontend-bread-crumb>
+       <div class="d-flex justify-content-between align-items-center mt-2">
+           <x-frontend-bread-crumb>
+               <li class="breadcrumb-item active" aria-current="page">Lessons</li>
+           </x-frontend-bread-crumb>
+           @auth
+               <a href="{{ route('home') }}" class="btn btn-sm text-white btn-primary">Dashboard</a>
+           @endauth
+       </div>
         <div class="row">
             @forelse($lessons as $lesson)
                 <div class="col-lg-3 col-md-6 col-12 mt-3">

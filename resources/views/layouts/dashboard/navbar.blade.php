@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light shadow-sm p-2">
     <div class="d-flex align-items-center">
-        <i class="uil-bars d-block d-md-none show__mobile__sidebar"></i>
-        <div class="hamburger not-active me-3 d-none d-md-block">
+        <i class="uil-bars d-block d-lg-none show__mobile__sidebar"></i>
+        <div class="hamburger not-active me-3 d-none d-lg-block">
             <span></span>
             <span></span>
             <span></span>

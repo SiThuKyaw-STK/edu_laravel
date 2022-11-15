@@ -126,6 +126,8 @@ m2 -297 c6 -80 27 -112 75 -112 16 0 103 39 203 91 l174 92 1711 0 1710 0 0
                 </li>
             </ul>
         </li>
-
     </ul>
+    <div class="px-2">
+        <a href="{{route('frontend.lessons')}}" class="btn btn-sm btn-secondary w-100">Frontend</a>
+    </div>
 </nav>

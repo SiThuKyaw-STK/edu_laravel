@@ -224,7 +224,7 @@ margin-left: -16.6%;
     border-radius: 5px;
 
 }
-@media screen and (max-width: 1023px){
+@media screen and (max-width: 1024px){
     .sideBar{
         box-shadow: 5px 0px 10px 0px rgba(47,72,88,0.5);
         transition:  .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out;
@@ -267,10 +267,13 @@ margin-left: -16.6%;
         width: 60% !important;
     }
 }
-/*laptop and above*/
-@media screen and (min-width: 1024px){
+/*tablet*/
+@media screen and (min-width: 768px) and (max-width: 1023px){
     table{
         width: 100% !important;
+    }
+    .sideBar{
+        width: 40%!important;
     }
 }
 .user__info ul.show{
