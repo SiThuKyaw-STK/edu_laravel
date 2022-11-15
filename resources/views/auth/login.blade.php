@@ -1,6 +1,9 @@
 @extends('layouts.main.app')
 @push('style')
     <style>
+        .login__right,.login__left{
+            min-height: 100vh;
+        }
         .login__content1, .login__content3 {
             padding-right: 80px;
             padding-left: 80px;
@@ -27,24 +30,64 @@
             padding-right: 80px;
             padding-left: 80px;
         }
+        @media screen and (max-width: 767px){
+            .login__left,.login__right{
+                min-height: 50vh !important;
+            }
+            .login__card {
+                padding-top: 40%;
+                padding-right: 30px;
+                padding-left: 30px;
+            }
+            .login__content1, .login__content3 {
+               padding: 0;
+            }
+            .login__content2{
+                width: 100% ;
+                padding: 0;
+                margin: 0;
+            }
+            .login__content3{
+                width: 100%;
+            }
+        }
+        @media screen and (min-width: 767px) and (max-width: 1023px){
+            .login__left,.login__right{
+                min-height: 50vh !important;
+            }
+            .login__card{
+                padding-top: 30% !important;
+                padding-left: 200px !important;
+                padding-right: 200px !important;
+            }
+            .login__content2{
+                width: 100% !important;
+                padding-top: 60px;
+            }
+            .login__content3{
+                width: 100%;
+            }
+        }
     </style>
 @endpush
 @section('content')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-7 bg-secondary min-vh-100">
-                <div class="login__content1">
-                    <h3 class="text-primary fw-bolder text-uppercase">education</h3>
-                </div>
-                <div class="login__content2">
-                    <h1 class="">WELCOME TO EDUCATION ON THE WEB</h1>
-                </div>
-                <div class="login__content3">
-                    <h5 class="text-white-50">Access your logins and personal data in the web app — quickly and
-                        securely.</h5>
-                </div>
+        <div class="row flex-column-reverse flex-lg-row">
+            <div class="login__left col-lg-7 col-12 bg-secondary d-flex d-lg-block align-items-center">
+               <div class="">
+                   <div class="login__content1">
+                       <h3 class="text-primary fw-bolder text-uppercase">education</h3>
+                   </div>
+                   <div class="login__content2 mt-5 m-md-0">
+                       <h1 class="">WELCOME TO EDUCATION ON THE WEB</h1>
+                   </div>
+                   <div class="login__content3">
+                       <h5 class="text-white-50">Access your logins and personal data in the web app — quickly and
+                           securely.</h5>
+                   </div>
+               </div>
             </div>
-            <div class="col-5 min-vh-100">
+            <div class="login__right col-lg-5 col-12">
                 <div>
                     <div class="float-end pt-5 d-flex align-items-center">
                         <h6 class="m-0 d-inline-block me-2 text-black-50">New User ?</h6>
@@ -52,7 +95,7 @@
                     </div>
 
                     <div class="login__card">
-                        <h3 class="text-capitalize">log in to education</h3>
+                        <h3 class="text-capitalize">log in</h3>
                         <div class="">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf

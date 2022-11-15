@@ -25,7 +25,7 @@
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-lg-6">
                     <div class="about__img">
-                        <img src="{{asset('frontend/assets/img/about.png')}}" alt="">
+                        <img class="w-100" src="{{asset('frontend/assets/img/about.png')}}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -101,7 +101,7 @@
             <div class="row">
                 <h4 class="text-primary text-uppercase fw-bold mt-5">lessons</h4>
                 @foreach($grades as $grade)
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <div class="lesson__card bg-warning text-center py-5 mb-5 rounded-2">
                         <h1>{{$grade->title}}</h1>
                         <p class="fw-bolder mt-3">Basic Education of Myanmar</p>
@@ -188,4 +188,51 @@
 
     </script>
 
+    {{--Navbar--}}
+    <script>
+        /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+        const sections = document.querySelectorAll('section[id]')
+
+        function scrollActive(){
+            const scrollY = window.pageYOffset
+
+            sections.forEach(current =>{
+                const sectionHeight = current.offsetHeight
+                const sectionTop = current.offsetTop - 100;
+                sectionId = current.getAttribute('id')
+
+                if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                    document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+                }else{
+                    document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+                }
+            })
+        }
+        window.addEventListener('scroll', scrollActive)
+
+        /*=============== CHANGE BACKGROUND NAVBAR ===============*/
+        function scrollHeader() {
+            const navbar = document.getElementById('navbar')
+            // When the scroll is greater than 50 viewport height, add the scroll-navbar class to the navbar tag
+            if (this.scrollY >= 50) navbar.classList.add('scroll-header'); else navbar.classList.remove('scroll-header')
+        }
+        window.addEventListener('scroll', scrollHeader)
+
+        // hamburger menu
+        let menu = document.getElementById('menu');
+        let nav_menu = document.getElementById('nav-menu');
+        const nav_items = document.querySelectorAll("#nav-item");
+
+        menu.onclick= function (){
+            menu.classList.toggle("openmeun");
+            nav_menu.classList.toggle("nav__menu-open");
+        }
+        for (const nav_item of nav_items){
+            nav_item.addEventListener('click',function (){
+                nav_menu.classList.remove("nav__menu-open");
+                menu.classList.remove("openmeun");
+            })
+        }
+
+    </script>
 @endpush

@@ -11,11 +11,11 @@
             @include('layouts.frontend.lessons_control_navbar')
             <x-frontend-bread-crumb>
                 <li class="breadcrumb-item"><a href="{{route('frontend.lessons')}}">Lessons</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{$lesson->title}}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{$lesson->excerpt_title}}</li>
             </x-frontend-bread-crumb>
-            <div class="row mt-3">
-                <div class="col-lg-8">
-                    <div class="card">
+            <div class="row mt-3 justify-content-center">
+                <div class="col-lg-8 col-12">
+                    <div class="card mb-3">
                         <div class="card-body show__lessonDetail">
                             {{--Header Image--}}
                             @if($lesson->header_image)
@@ -38,7 +38,7 @@
 
                             {{--Title--}}
                             <div class="">
-                                <h3 class="fw-bolder">{{$lesson->title}}</h3>
+                                <h5 class="fw-bolder">{{$lesson->title}}</h5>
                             </div>
 
                             {{--Lesson Detail--}}
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 {{--Related Posts--}}
-                <div class="col-lg-4 lesson__relatedPosts">
+                <div class="col-lg-4 col-12 col-md-6 lesson__relatedPosts mb-3 mb-lg-0">
                     <h3>Related Posts</h3>
                     <div class="card">
                         <div class="card-body">
@@ -185,4 +185,37 @@
         });
     </script>
 
+
+    {{--light mode dark mode--}}
+    <script>
+        /*=============== LIGHT DARK THEME ===============*/
+        const themeButton = document.getElementById('theme-button')
+        const darkTheme = 'dark-theme'
+        const iconTheme = 'uil-sun'
+
+        // Previously selected topic (if user selected)
+        const selectedTheme = localStorage.getItem('selected-theme')
+        const selectedIcon = localStorage.getItem('selected-icon')
+
+        // We obtain the current theme that the interface has by validating the light-theme class
+        const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'light' : 'dark'
+        const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil uil-moon' : 'uil uil-sun'
+
+        // We validate if the user previously chose a topic
+        if (selectedTheme) {
+            // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the light
+            document.body.classList[selectedTheme === 'light' ? 'add' : 'remove'](darkTheme)
+            themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
+        }
+
+        // Activate / deactivate the theme manually with the button
+        themeButton.addEventListener('click', () => {
+            // Add or remove the light / icon theme
+            document.body.classList.toggle(darkTheme)
+            themeButton.classList.toggle(iconTheme)
+            // We save the theme and the current icon that the user chose
+            localStorage.setItem('selected-theme', getCurrentTheme())
+            localStorage.setItem('selected-icon', getCurrentIcon())
+        })
+    </script>
 @endpush
