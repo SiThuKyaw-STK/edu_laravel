@@ -28,7 +28,6 @@
                                     {{ $grade->id == old('grade',$lesson->grade_id) ? 'selected':'' }}>
                                     {{$grade->title}}
                                 </option>
-
                             @empty
                                 <option value="">There is no data</option>
                             @endforelse
@@ -127,26 +126,29 @@
         $(document).ready(function () {
             $('select[name="grade"]').on('click',function () {
                 let gradeID = $(this).val();
+                let old_subject = {{old('subject',$lesson->subject_id)}};
                 if (gradeID != -1){
                     $.ajax({
                         url:'/getSubjects/' + gradeID,
                         type: "GET",
                         dataType : "json",
                         success : function (data) {
-                            $('select[name="subject"]').empty();
+                            let options ="<option value='' selected>Subjects</option>";
                             $.each(data,function (key,value) {
-                                $('select[name="subject"]').append('<option value="'+key+'">'+value+'</option>');
+                                options += "<option value='"+key+"'";
+                                if (key == old_subject){
+                                    options += " selected";
+                                }
+                                options +=">" + value + "</option>";
                             });
+                            $('select[name="subject"]').html(options);
+
                         }
                     });
-
                 }else  {
                     $('select[name="subject"]').empty();
                     $('select[name="subject"]').append('<option>Subject</option>');
                 }
-
-
-
             })
         })
        let clickGrade =setInterval(function () {

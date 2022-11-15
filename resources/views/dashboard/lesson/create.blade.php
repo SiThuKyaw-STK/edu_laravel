@@ -93,23 +93,29 @@
         $(document).ready(function () {
             $('select[name="grade"]').on('click',function () {
                 let gradeID = $(this).val();
+                {{--let old_subject = {{old('subject') ? 'selected':'' }};--}}
                 if (gradeID != -1){
                     $.ajax({
                         url:'/getSubjects/' + gradeID,
                         type: "GET",
                         dataType : "json",
                         success : function (data) {
-                            $('select[name="subject"]').empty();
+                            let options ="<option value='' selected>Subjects</option>";
                             $.each(data,function (key,value) {
-                                $('select[name="subject"]').append('<option value="'+key+'">'+value+'</option>');
+                                options += "<option value='"+key+"'";
+
+                                    options += " "+key+" ";
+
+                                options +=">" + value + "</option>";
                             });
+                            $('select[name="subject"]').html(options);
+
                         }
                     });
                 }else  {
                     $('select[name="subject"]').empty();
-                    $('select[name="subject"]').append('<option >Subject</option>');
+                    $('select[name="subject"]').append('<option>Subject</option>');
                 }
-
             })
         })
         let clickGrade =setInterval(function () {
