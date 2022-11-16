@@ -13,7 +13,7 @@
                     </h4>
                     <hr>
 
-                    <table id="d-table-user" class="display hover cell-border nowrap">
+                    <table id="d-table-user" class="display hover cell-border nowrap" style="width: 100%">
                         <thead>
                         <tr>
                             <th>#</th>

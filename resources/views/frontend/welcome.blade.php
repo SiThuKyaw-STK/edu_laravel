@@ -1,4 +1,5 @@
 @extends('layouts.main.frontend')
+@push('title')<title>Education</title>@endpush
 @push('style')
     <link
         rel="stylesheet"
