@@ -8,10 +8,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{asset('dashboard/assets/css/style.css')}}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <style>
 
-
-    </style>
 </head>
 <body>
 

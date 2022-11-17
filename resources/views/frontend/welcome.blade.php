@@ -148,33 +148,18 @@
             distance : "60px",
         });
         //about
+        sr.reveal('.about__content',{
+            origin : 'right',
+            distance: '60px',
+            duration: 2500,
+            delay: 400,
+        });
         sr.reveal('.about__img',{
-            duration : 2000,
-            delay : 500
-        });
-        sr.reveal('.about__content h4',{
-            duration : 2000,
-            distance : '100px',
-            origin : 'right'
-        });
-        sr.reveal('.about__content h2',{
-            duration : 2000,
-            delay : 500,
-            distance : '1000px',
-            origin : 'right'
-        });
-        sr.reveal('.about__content p',{
-            duration : 2000,
-            delay : 1000,
-            distance : '1000px',
-            origin : 'right'
-        });
-        sr.reveal('.about__content a',{
-            duration : 2000,
-            delay : 1500,
-            distance : '1000px',
-            origin : 'right'
-        });
+            origin : 'left',
+            distance: '60px',
+            duration: 2500,
+            delay: 400,
+        })
         //lessons
         sr.reveal('.lesson__card',{
             duration : 2000,
