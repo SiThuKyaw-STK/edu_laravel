@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\UserResource;
+
 
 class UserApiController extends Controller
 {
@@ -16,9 +18,9 @@ class UserApiController extends Controller
      */
     public function index()
     {
-        $users = User::latest('id')->paginate(10);
+        $users = User::latest('id')->get();
 
-        return  response()->json($users);
+        return  UserResource::collection($users);
     }
 
     /**

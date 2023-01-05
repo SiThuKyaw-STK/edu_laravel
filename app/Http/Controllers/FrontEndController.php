@@ -6,6 +6,7 @@ use App\Models\Grade;
 use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontEndController extends Controller
 {

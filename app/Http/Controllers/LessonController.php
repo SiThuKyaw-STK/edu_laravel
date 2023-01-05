@@ -29,7 +29,6 @@ class LessonController extends Controller
             ->with(['getGrade','getSubject','getUser'])
             ->get();
 
-
         return view('dashboard.lesson.index',compact('lessons'));
     }
 

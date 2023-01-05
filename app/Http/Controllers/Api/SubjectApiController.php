@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SubjectResource;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -18,7 +19,7 @@ class SubjectApiController extends Controller
     {
         $subjects = Subject::latest('id')->paginate(10);
 
-        return response()->json($subjects);
+        return SubjectResource::collection($subjects);
     }
 
     /**

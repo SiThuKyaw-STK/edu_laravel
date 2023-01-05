@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class LessonResource extends JsonResource
 {
@@ -19,11 +20,14 @@ class LessonResource extends JsonResource
             "grade" => $this->getGrade->title,
             "subject" => $this->getSubject->title,
             "title" => $this->title,
+            "excerpt_title" => Str::substrReplace($this->title,'...',25),
             "description" => $this->description,
+            "excerpt_description" => Str::substrReplace($this->description,'...',50),
             "date" => $this->created_at->format("d M Y"),
             "time" => $this->created_at->format("h:i A"),
             "uploader" => new UserResource($this->getUser),
             "photos" => PhotoResource::collection($this->getLessonImages),
+            "headerImage" => $this->header_image,
         ];
     }
 }
