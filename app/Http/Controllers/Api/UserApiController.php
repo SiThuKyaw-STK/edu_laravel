@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Resources\UserResource;
-
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class UserApiController extends Controller
 {
@@ -18,9 +20,9 @@ class UserApiController extends Controller
      */
     public function index()
     {
-        $users = User::latest('id')->get();
+        $users = User::latest('id')->paginate(10);
 
-        return  UserResource::collection($users);
+        return UserResource::collection($users);
     }
 
     /**
@@ -74,6 +76,8 @@ class UserApiController extends Controller
             'name' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'bio' => "nullable|string|min:100",
+            'user_image' => "nullable|mimetypes:image/jpeg,image/png|file|max:2500"
         ]);
 
         $user = User::find($id);
@@ -89,6 +93,23 @@ class UserApiController extends Controller
         }
         if ($request->has('password')){
             $user->password = $request->password;
+        }
+        if ($request->has('bio')){
+            $user->bio = $request->bio;
+        }
+        if ($request->hasFile('user_image')) {
+
+            $image = Image::make($request->file('user_image'))->fit(500, 500)->encode('jpg');
+
+
+            $dir = "public/profile/";
+
+            Storage::delete($dir . $user->user_image);
+
+            $newName = uniqid() . "_user_image." . $request->file("user_image")->getClientOriginalExtension();
+            Storage::put("public/profile/".$newName,$image);
+            $user->user_image = $newName;
+
         }
         $user->update();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SubjectResource;
+use App\Models\Grade;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,7 +18,13 @@ class SubjectApiController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::latest('id')->paginate(10);
+        $subjects = Subject::latest('id')->get();
+
+        return SubjectResource::collection($subjects);
+    }
+
+    public function byGrade($id){
+        $subjects = Grade::find($id)->subjects;
 
         return SubjectResource::collection($subjects);
     }
@@ -54,7 +61,7 @@ class SubjectApiController extends Controller
      */
     public function show($id)
     {
-        $subject = Subject::find($id);
+        $subject = Subject::with('grade')->find($id);
         if (is_null($subject)){
             return response()->json(["message"=>"Subject not found!"],404);
         }

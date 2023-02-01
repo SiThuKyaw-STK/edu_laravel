@@ -48,6 +48,7 @@ class SubjectController extends Controller
         $subject->title = $request->subject_title;
         $subject->slug = Str::slug($request->subject_title);
         $subject->user_id = Auth::id();
+//        return $request->subject_desc;
         $subject->save();
         return redirect()->route('subject.create')->with('status',$request->subject_title." is added");
     }

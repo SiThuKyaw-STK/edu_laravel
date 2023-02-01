@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function getHeaderImage(){
         return $this->hasMany(Lesson::class);
     }
+    public function getSubjects(){
+        return $this->hasMany(Subject::class,'user_id');
+    }
 }

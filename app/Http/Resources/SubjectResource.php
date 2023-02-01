@@ -16,6 +16,7 @@ class SubjectResource extends JsonResource
     {
         return [
             "id" => $this->id,
+            "grade_id" => $this->grade->id,
             "grade" => $this->grade->title,
             "title" => $this->title,
             "slug" => $this->slug,

@@ -63,7 +63,7 @@
                             @endif
 
                             {{--Lesson Description--}}
-                            <p class="mt-3" style="text-align: justify;white-space: pre-wrap">{{$lesson->description}}</p>
+                            <p class="mt-3" style="text-align: justify;white-space: pre-wrap">{!!$lesson->description!!}</p>
 
                             @php
                                 $nextLesson = \App\Models\Lesson::where('id','<',$lesson->id)->latest('id')->first();

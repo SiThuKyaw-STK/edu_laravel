@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\Photo;
 use App\Http\Requests\StorePhotoRequest;
 use App\Http\Requests\UpdatePhotoRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
@@ -16,7 +18,11 @@ class PhotoController extends Controller
      */
     public function index()
     {
+
+        $subjects = Grade::find("4")->subjects;
         $getPhotos = new Photo();
+        return $subjects;
+
         return view('dashboard.photo.index',compact('getPhotos'));
     }
 

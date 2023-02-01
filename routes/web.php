@@ -24,14 +24,7 @@ use Intervention\Image\Facades\Image;
 //Route::get('/', function () {
 //    return view('frontend.welcome');
 //});
-Route::get('/image', function() {
-    $image = 'https://0.soompi.io/wp-content/uploads/2021/09/09193308/Lisa-4.jpg';
-    $img = Image::make($image)->resize(null,300,function ($x){
-        $x->aspectRatio();
-        $x->upsize();
-    });
-    return $img->response('jpg');
-});
+
 Route::get('/',[FrontEndController::class,'welcome'])->name('frontend.welcome');
 Route::get('/lessons',[FrontEndController::class,'lessons'])->name('frontend.lessons');
 Route::get('/lesson-show/{id}',[FrontEndController::class,'lessonShow'])->name('frontend.lesson.show');

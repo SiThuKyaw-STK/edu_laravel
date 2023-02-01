@@ -17,8 +17,10 @@ class LessonResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "grade" => $this->getGrade->title,
-            "subject" => $this->getSubject->title,
+            "grade_title" =>  $this->getGrade->title,
+            "grade" => new GradeResource($this->getGrade),
+            "subject_title" =>  $this->getSubject->title,
+            "subject" => new SubjectResource($this->getSubject),
             "title" => $this->title,
             "excerpt_title" => Str::substrReplace($this->title,'...',25),
             "description" => $this->description,

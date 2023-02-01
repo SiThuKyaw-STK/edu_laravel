@@ -103,7 +103,7 @@
                     <div class="mb-3">
                         <label class="form-label">Lesson Description</label>
                         <textarea
-                            class="form-control
+                            class="form-control wysiwyg
                             @error('lesson_description') is-invalid @enderror"
                             name="lesson_description"
                             form="postUpdateForm"

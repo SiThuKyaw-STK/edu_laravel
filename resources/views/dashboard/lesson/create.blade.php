@@ -75,7 +75,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Lesson Description</label>
-                            <textarea class="form-control @error('lesson_description') is-invalid @enderror" name="lesson_description" id="" cols="30" rows="10">{{old('lesson_description')}}</textarea>
+                            <textarea class="form-control wysiwyg @error('lesson_description') is-invalid @enderror" name="lesson_description" id="" cols="30" rows="10">{{old('lesson_description')}}</textarea>
                             @error("lesson_description")
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
