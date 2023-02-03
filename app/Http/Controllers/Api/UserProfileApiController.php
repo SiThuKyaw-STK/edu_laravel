@@ -11,19 +11,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-class UserApiController extends Controller
+class UserProfileApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $users = User::latest('id')->paginate(10);
-
-        return UserResource::collection($users);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -122,13 +116,4 @@ class UserApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $user = User::find($id);
-        if (is_null($user)){
-            return response()->json(["message"=>"User not found!"],404);
-        }
-        $user->delete();
-        return response()->json('',204);
-    }
 }
